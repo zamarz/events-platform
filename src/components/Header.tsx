@@ -2,6 +2,7 @@
 import ThemeContext from "@/app/context/themeContext";
 import Link from "next/link";
 import { useContext } from "react";
+import { MdDarkMode, MdOutlineLightMode } from "react-icons/md";
 
 const Header = () => {
   const { darkTheme, setDarkTheme } = useContext(ThemeContext);
@@ -15,7 +16,25 @@ const Header = () => {
           Run Together
         </Link>
         <ul className="flex items-center ml-5">
-          <li className="ml-2"></li>
+          <li className="ml-2">
+            {darkTheme ? (
+              <MdOutlineLightMode
+                className="cursor-pointer"
+                onClick={() => {
+                  setDarkTheme(false);
+                  localStorage.removeItem("runner-theme");
+                }}
+              />
+            ) : (
+              <MdDarkMode
+                className="cursor-pointer"
+                onClick={() => {
+                  setDarkTheme(true);
+                  localStorage.setItem("runner-theme", "true");
+                }}
+              />
+            )}
+          </li>
         </ul>
       </div>
       <ul className="flex items-center justify-between w-full md:w-1/3 mt-4 mx-12">

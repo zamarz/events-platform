@@ -49,7 +49,7 @@ const Header = () => {
           </Link>
         </li>
         <li className="hover:translate-y-2 duration-500 transition-all">
-          <Link href="/" className="text-sm md:text-base lg:text-xl">
+          <Link href="/addevent" className="text-sm md:text-base lg:text-xl">
             Create New Event
           </Link>
         </li>

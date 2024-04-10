@@ -12,11 +12,15 @@ const EventAdder = () => {
   const [endTime, setEndTime] = useState("");
   const [utcStart, setUtcStart] = useState("");
   const [utcEnd, setUtcEnd] = useState("");
+  const [description, setDescription] = useState("");
 
   const newEventToSend: EventData = {
     event: {
       name: {
         html: `${eventName}`,
+      },
+      description: {
+        html: "",
       },
       start: {
         timezone: "Europe/London",
@@ -65,6 +69,16 @@ const EventAdder = () => {
             name="eventName"
             value={eventName}
             onChange={(event) => setEventName(event.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="description">Description:</label>
+          <input
+            type="text"
+            id="description"
+            name="description"
+            value={description}
+            onChange={(event) => setDescription(event.target.value)}
           />
         </div>
         <div>

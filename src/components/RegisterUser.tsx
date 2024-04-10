@@ -3,6 +3,7 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebaseConfig";
 import { FormEvent, useState } from "react";
+import Link from "next/link";
 
 const RegisterUser = () => {
   const [email, setEmail] = useState("");
@@ -62,6 +63,15 @@ const RegisterUser = () => {
           Sign Up
         </button>
       </form>
+      <div className="justify-center items-center space-x-5 max-w-md mx-auto mt-5 p-4">
+        <p className="text-l">
+          Already registered? Click{" "}
+          <Link href="/sign-in" className="underline shadow">
+            here to sign in
+          </Link>
+          .
+        </p>
+      </div>
     </section>
   );
 };

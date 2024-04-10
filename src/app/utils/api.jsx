@@ -16,6 +16,23 @@ export const createEvent = (event) => {
     })
     .then((response) => {
       console.log(response.data);
+      return response.data;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
+export const publishEvent = (event_id) => {
+  return eventbriteSite
+    .post(`v3/events/${event_id}/publish/`, {
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_EVENTBRITE_TOKEN}`,
+        Accept: "application/json",
+      },
+    })
+    .then((response) => {
+      console.log(response.data);
     })
     .catch((error) => {
       console.error(error);

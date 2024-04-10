@@ -1,7 +1,7 @@
 "use client";
 
 import { EventData } from "@/app/types/types";
-import { createEvent } from "../app/utils/api";
+import { createEvent, publishEvent } from "../app/utils/api";
 import { FormEvent, useEffect, useState } from "react";
 import { UTCDate } from "@date-fns/utc";
 import { formatISO } from "date-fns";
@@ -50,10 +50,18 @@ const EventAdder = () => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    createEvent(newEventToSend);
+    createEvent(newEventToSend)
+      .then((response: any) => {
+        publishEvent(response.id);
+      })
+      .catch((error: Error) => {
+        console.error(error);
+      });
+
     setEventName("");
     setStartTime("");
     setEndTime("");
+    setDescription("");
   };
 
   return (
@@ -119,7 +127,7 @@ const EventAdder = () => {
         </div>
 
         <button className="button" type="submit">
-          Submit
+          Publish Event
         </button>
       </form>
     </section>

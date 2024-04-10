@@ -7,23 +7,6 @@ import { UTCDate } from "@date-fns/utc";
 import { formatISO } from "date-fns";
 
 const EventAdder = () => {
-  // const [values, setValues] = useState<EventData>({
-  //   event: {
-  //     name: {
-  //       html: "",
-  //     },
-  //     start: {
-  //       timezone: "America/Los_Angeles",
-  //       utc: "2026-12-01T02:00:00Z",
-  //     },
-  //     end: {
-  //       timezone: "America/Los_Angeles",
-  //       utc: "2026-12-01T05:00:00Z",
-  //     },
-  //     currency: "GBP",
-  //   },
-  // });
-
   const [eventName, setEventName] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
@@ -63,7 +46,6 @@ const EventAdder = () => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(newEventToSend);
     createEvent(newEventToSend);
     setEventName("");
     setStartTime("");

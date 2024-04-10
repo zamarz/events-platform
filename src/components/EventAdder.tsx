@@ -57,11 +57,16 @@ const EventAdder = () => {
   };
 
   return (
-    <section>
-      <form onSubmit={handleSubmit}>
-        <h2>Add a new event</h2>
-        <div>
-          <label htmlFor="eventName">Event Name:</label>
+    <section className="min-h-screen mx-auto container pt-8 ">
+      <form
+        className="items-center justify-center space-x-5 max-w-md mx-auto mt-5 p-4 rounded shadow bg-tertiary-alt border border-tertiary-light"
+        onSubmit={handleSubmit}
+      >
+        <h2 className="mb-4 text-xl font-semibold">Add a new event</h2>
+        <div className="mb-4">
+          <label htmlFor="eventName" className="block font-medium mb-2">
+            Event Name:
+          </label>
           <input
             type="text"
             placeholder="Enter a name"
@@ -69,36 +74,47 @@ const EventAdder = () => {
             name="eventName"
             value={eventName}
             onChange={(event) => setEventName(event.target.value)}
+            className="w-full border border-gray-300 rounded py-2 px-3"
           />
         </div>
-        <div>
-          <label htmlFor="description">Description:</label>
+        <div className="mb-4">
+          <label htmlFor="description" className="block font-medium mb-2">
+            Description:
+          </label>
           <input
             type="text"
+            placeholder="Enter a description"
             id="description"
             name="description"
+            className="w-full border border-gray-300 rounded py-7 my-2 px-4"
             value={description}
             onChange={(event) => setDescription(event.target.value)}
           />
         </div>
-        <div>
-          <label htmlFor="startTime">Start:</label>
+        <div className="mb-4">
+          <label htmlFor="startTime" className="block font-medium mb-2">
+            Start:
+          </label>
           <input
             type="datetime-local"
             id="startTime"
+            className="w-full border border-gray-300 rounded py-2 px-3"
             name="startTime"
             value={startTime}
             onChange={(event) => setStartTime(event.target.value)}
           />
         </div>
-        <div>
-          <label htmlFor="endTime">End:</label>
+        <div className="mb-4">
+          <label htmlFor="endTime" className="block font-medium mb-2">
+            End:
+          </label>
           <input
             type="datetime-local"
             id="endTime"
             name="endTime"
             value={endTime}
             onChange={(event) => setEndTime(event.target.value)}
+            className="w-full border border-gray-300 rounded py-2 px-3"
           />
         </div>
 

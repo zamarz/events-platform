@@ -65,7 +65,9 @@ const EventAdder = () => {
     event.preventDefault();
     console.log(newEventToSend);
     createEvent(newEventToSend);
-    //reset form to empty strings
+    setEventName("");
+    setStartTime("");
+    setEndTime("");
   };
 
   return (

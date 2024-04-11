@@ -29,7 +29,6 @@ export default function RootLayout({
     const unsubscribe = onAuthStateChanged(auth, (userData) => {
       if (userData) {
         const { email, uid } = userData;
-        console.log(userData);
         setUser({ email, uid });
       } else {
         setUser({ email: "", uid: "" });

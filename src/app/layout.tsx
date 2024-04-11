@@ -1,13 +1,19 @@
+"use client";
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ThemeProvider from "@/components/ThemeProvider";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../firebaseConfig";
+import { useEffect, useState } from "react";
+import UserContext from "../context/UserContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: "Run together",
   description: "Find your next running group",
 };
@@ -17,14 +23,32 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [user, setUser] = useState({ email: "", uid: "" });
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (userData) => {
+      if (userData) {
+        const { email, uid } = userData;
+        console.log(userData);
+        setUser({ email, uid });
+      } else {
+        setUser({ email: "", uid: "" });
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ThemeProvider>
-          <Header />
-          <main>{children}</main>
-          <Footer />
-        </ThemeProvider>
+        <UserContext.Provider value={user}>
+          <ThemeProvider>
+            <Header />
+            <main>{children}</main>
+            <Footer />
+          </ThemeProvider>
+        </UserContext.Provider>
       </body>
     </html>
   );

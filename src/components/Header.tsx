@@ -1,5 +1,6 @@
 "use client";
 import ThemeContext from "@/app/context/themeContext";
+import UserContext from "@/context/UserContext";
 import Link from "next/link";
 import { useContext } from "react";
 import { MdDarkMode, MdOutlineLightMode } from "react-icons/md";

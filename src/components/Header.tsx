@@ -10,6 +10,7 @@ import { auth } from "../../firebaseConfig";
 const Header = () => {
   const { darkTheme, setDarkTheme } = useContext(ThemeContext);
   const user = useContext(UserContext);
+  console.log(user);
   return (
     <header className="bg-primary text-white py-8 px-6 text-xl flex flex-wrap md:flex-nowrap items-center justify-between ">
       <div className="flex mx-9 my-4 items-center w-full md:w-2/3">
@@ -39,7 +40,7 @@ const Header = () => {
               />
             )}
           </li>
-          {user.email > 0 ? (
+          {user.email.length > 0 ? (
             <li className="mx-auto px-7">
               <p>Hi {user.email}!</p>
             </li>
@@ -64,7 +65,7 @@ const Header = () => {
             Create New Event
           </Link>
         </li>
-        {user.email > 0 ? (
+        {user.email.length > 0 ? (
           <li className="hover:translate-y-2 duration-500 transition-all">
             <button
               className="button"

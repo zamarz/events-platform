@@ -4,10 +4,12 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebaseConfig";
 import { FormEvent, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const RegisterUser = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -15,6 +17,20 @@ const RegisterUser = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
+        router.push(
+          `https://www.eventbrite.com/oauth/authorize?response_type=token&client_id=${process.env.NEXT_PUBLIC_EVENTBRITE_API_KEY}&redirect_uri=https://9c35-2a02-c7c-f42d-2b00-cc07-3e53-67b3-ed9.ngrok-free.app/redirect`
+        );
+        // authorizeUser()
+        //   .then((data: any) => {
+        //     console.log(data);
+        //   })
+        //   .catch((error: Error) => {
+        //     console.error(error);
+        //   });
+        console.log("hello");
+      })
+      .then(() => {
+        console.log("hi");
       })
       .catch((error) => {
         const errorCode = error.code;

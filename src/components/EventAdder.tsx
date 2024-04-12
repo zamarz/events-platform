@@ -1,7 +1,7 @@
 "use client";
 
 import { EventData } from "@/app/types/types";
-import { createEvent, publishEvent } from "../app/utils/api";
+import { addTicketClass, createEvent, publishEvent } from "../app/utils/api";
 import { FormEvent, useEffect, useState } from "react";
 import { UTCDate } from "@date-fns/utc";
 import { formatISO } from "date-fns";
@@ -13,6 +13,7 @@ const EventAdder = () => {
   const [utcStart, setUtcStart] = useState("");
   const [utcEnd, setUtcEnd] = useState("");
   const [description, setDescription] = useState("");
+  const accessToken = "E33RFTVR2MK33ATCR24M";
 
   const newEventToSend: EventData = {
     event: {
@@ -34,6 +35,14 @@ const EventAdder = () => {
     },
   };
 
+  const ticketClass = {
+    ticket_class: {
+      name: "VIP",
+      cost: "GBP,1000",
+      quantity_total: 100,
+    },
+  };
+
   useEffect(() => {
     if (startTime.length >= 16) {
       const startFormTime = formatISO(new UTCDate(startTime));
@@ -52,7 +61,8 @@ const EventAdder = () => {
     event.preventDefault();
     createEvent(newEventToSend)
       .then((response: any) => {
-        publishEvent(response.id);
+        addTicketClass(response.id, ticketClass);
+        // publishEvent(response.id);
       })
       .catch((error: Error) => {
         console.error(error);

@@ -18,7 +18,7 @@ const RegisterUser = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         router.push(
-          `https://www.eventbrite.com/oauth/authorize?response_type=token&client_id=${process.env.NEXT_PUBLIC_EVENTBRITE_API_KEY}&redirect_uri=https://9c35-2a02-c7c-f42d-2b00-cc07-3e53-67b3-ed9.ngrok-free.app/redirect`
+          `https://www.eventbrite.com/oauth/authorize?response_type=token&client_id=${process.env.NEXT_PUBLIC_EVENTBRITE_API_KEY}&redirect_uri=https://ebbe-2a02-c7c-f42d-2b00-fc3d-65ea-44bb-d1fb.ngrok-free.app/redirect`
         );
         // authorizeUser()
         //   .then((data: any) => {

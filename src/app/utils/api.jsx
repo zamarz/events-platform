@@ -27,12 +27,36 @@ export const createEvent = (event) => {
     });
 };
 
-export const publishEvent = (event_id) => {
+export const addTicketClass = (event_id, ticketClass) => {
+  // const data = {
+  //   ticket_class: {
+  //     name: "General",
+  //     free: true,
+  //     quantity_total: 100,
+  //   },
+  // };
+  return eventbriteSite
+    .post(`v3/events/${event_id}/ticket_classes/`, ticketClass, {
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_EVENTBRITE_TOKEN}`,
+        Accept: "application/json",
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    })
+    .then((response) => {
+      console.log(response.data);
+      return response.data;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
+export const publishEvent = (event_id, accessToken) => {
   return eventbriteSite
     .post(`v3/events/${event_id}/publish/`, {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_EVENTBRITE_TOKEN}`,
-        Accept: "application/json",
       },
     })
     .then((response) => {
@@ -50,7 +74,7 @@ export const authorizeUser = (code) => {
     client_secret: process.env.NEXT_PUBLIC_EVENTBRITE_CLIENT_SECRET,
     code: `${code}`,
     redirect_uri:
-      "https://9c35-2a02-c7c-f42d-2b00-cc07-3e53-67b3-ed9.ngrok-free.app/redirect",
+      "https://ebbe-2a02-c7c-f42d-2b00-fc3d-65ea-44bb-d1fb.ngrok-free.app/redirect",
   });
 
   return axios

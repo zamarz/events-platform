@@ -1,3 +1,5 @@
+"use client"; //delete
+import { getEventsId } from "@/app/utils/api";
 import Image from "next/image";
 
 const HomePage = () => {
@@ -25,7 +27,10 @@ const HomePage = () => {
         <h3 className="text-2xl">Find your next running event</h3>
         <p>Running events will go here</p>
       </div>
-      <button className="button"> hit me</button>
+      <button className="button" onClick={() => getEventsId()}>
+        {" "}
+        hit me
+      </button>
     </section>
   );
 };

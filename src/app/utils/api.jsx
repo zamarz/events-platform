@@ -36,13 +36,10 @@ export const addTicketClass = (event_id, ticketClass) => {
   //   },
   // };
   return eventbriteSite
-    .post(`v3/events/${event_id}/ticket_classes/`, ticketClass, {
-      headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_EVENTBRITE_TOKEN}`,
-        Accept: "application/json",
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-    })
+    .post(
+      `v3/events/${event_id}/ticket_classes/?token=${process.env.NEXT_PUBLIC_EVENTBRITE_TOKEN}`,
+      ticketClass
+    )
     .then((response) => {
       console.log(response.data);
       return response.data;

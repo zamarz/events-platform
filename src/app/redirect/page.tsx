@@ -49,10 +49,7 @@ const redirect = () => {
         <h3 className="text-2xl">Redirect Testing</h3>
         <p>Will it work?</p>
       </div>
-      <button
-        className="button"
-        onClick={() => publishEvent(eventId, accessToken)}
-      >
+      <button className="button" onClick={() => publishEvent(eventId)}>
         Testing
       </button>
     </section>

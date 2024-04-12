@@ -10,6 +10,7 @@ import { auth } from "../../firebaseConfig";
 const Header = () => {
   const { darkTheme, setDarkTheme } = useContext(ThemeContext);
   const user = useContext(UserContext);
+
   return (
     <header className="bg-primary text-white py-8 px-6 text-xl flex flex-wrap md:flex-nowrap items-center justify-between ">
       <div className="flex mx-9 my-4 items-center w-full md:w-2/3">
@@ -59,11 +60,15 @@ const Header = () => {
             My Events
           </Link>
         </li>
-        <li className="hover:translate-y-2 duration-500 transition-all">
-          <Link href="/addevent" className="text-sm md:text-base lg:text-xl">
-            Create New Event
-          </Link>
-        </li>
+        {user.uid === process.env.NEXT_PUBLIC_ADMIN_UID ? (
+          <li className="hover:translate-y-2 duration-500 transition-all">
+            <Link href="/addevent" className="text-sm md:text-base lg:text-xl">
+              Create New Event
+            </Link>
+          </li>
+        ) : (
+          <></>
+        )}
         {user.email.length > 0 ? (
           <li className="hover:translate-y-2 duration-500 transition-all">
             <button

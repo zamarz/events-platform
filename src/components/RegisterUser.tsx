@@ -5,24 +5,26 @@ import { auth } from "../../firebaseConfig";
 import { FormEvent, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Loading from "@/app/loading";
 
 const RegisterUser = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setLoading(true);
 
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const user = userCredential.user;
         router.push("/");
-
-        console.log("hello");
-      })
-      .then(() => {
-        console.log("hi");
+        setLoading(false);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -30,6 +32,7 @@ const RegisterUser = () => {
         console.log(errorCode);
         console.log(errorMessage);
       });
+    setLoading(false);
   };
 
   return (

@@ -21,7 +21,7 @@ const redirect = () => {
 
   useEffect(() => {
     try {
-      writeNewUserInfoToDB(user, accessToken);
+      writeNewUserInfoToDB(user);
     } catch (error) {
       console.error(error);
     }

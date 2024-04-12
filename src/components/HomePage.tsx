@@ -1,6 +1,5 @@
-"use client"; //delete
-import { getEventsId } from "@/app/utils/api";
 import Image from "next/image";
+import EventsList from "./EventList";
 
 const HomePage = () => {
   return (
@@ -25,12 +24,8 @@ const HomePage = () => {
       </div>
       <div className="pt-7">
         <h3 className="text-2xl">Find your next running event</h3>
-        <p>Running events will go here</p>
+        <EventsList />
       </div>
-      <button className="button" onClick={() => getEventsId()}>
-        {" "}
-        hit me
-      </button>
     </section>
   );
 };

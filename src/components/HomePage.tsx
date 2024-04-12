@@ -1,11 +1,6 @@
-"use client"; //delete
-
-import { publishEvent } from "@/app/utils/api";
 import Image from "next/image";
 
 const HomePage = () => {
-  const eventID = "881802965407"; //delete
-
   return (
     <section className="min-h-screen px-10 py-10 mx-auto container">
       <div className="flex items-center justify-center space-x-4 bg-tertiary-light">
@@ -30,10 +25,7 @@ const HomePage = () => {
         <h3 className="text-2xl">Find your next running event</h3>
         <p>Running events will go here</p>
       </div>
-      <button className="button" onClick={() => publishEvent(eventID)}>
-        {" "}
-        hit me
-      </button>
+      <button className="button"> hit me</button>
     </section>
   );
 };

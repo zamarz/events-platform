@@ -15,8 +15,6 @@ const redirect = () => {
     return <Error />;
   }
 
-  const eventId = "880792182127"; //delete this
-
   const currentURL = typeof window !== "undefined" ? window.location.href : "";
   const urlParams = new URLSearchParams(new URL(currentURL).hash.slice(1));
   let accessToken = urlParams.get("access_token");
@@ -49,9 +47,7 @@ const redirect = () => {
         <h3 className="text-2xl">Redirect Testing</h3>
         <p>Will it work?</p>
       </div>
-      <button className="button" onClick={() => publishEvent(eventId)}>
-        Testing
-      </button>
+      <button className="button">Testing</button>
     </section>
   );
 };

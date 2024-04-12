@@ -28,13 +28,6 @@ export const createEvent = (event) => {
 };
 
 export const addTicketClass = (event_id, ticketClass) => {
-  // const data = {
-  //   ticket_class: {
-  //     name: "General",
-  //     free: true,
-  //     quantity_total: 100,
-  //   },
-  // };
   return eventbriteSite
     .post(
       `v3/events/${event_id}/ticket_classes/?token=${process.env.NEXT_PUBLIC_EVENTBRITE_TOKEN}`,
@@ -62,6 +55,7 @@ export const publishEvent = (event_id) => {
     });
 };
 
+//not needed for now
 export const authorizeUser = (code) => {
   const data = new URLSearchParams({
     grant_type: "authorization_code",

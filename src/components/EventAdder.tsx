@@ -37,8 +37,8 @@ const EventAdder = () => {
 
   const ticketClass = {
     ticket_class: {
-      name: "VIP",
-      cost: "GBP,1000",
+      name: "General",
+      free: true,
       quantity_total: 100,
     },
   };

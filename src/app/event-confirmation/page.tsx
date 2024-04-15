@@ -1,6 +1,9 @@
 import React from "react";
 
 const EventConfirmation = () => {
+  //needs props for name and date
+  //will need integration with Google Calendar
+
   return (
     <div>
       <div>

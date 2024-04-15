@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import EventBriteWidget from "./EventBriteWidget";
 
 const EventSingle = () => {
   const [eventInfo, setEventInfo] = useState(null);
@@ -44,7 +45,7 @@ const EventSingle = () => {
           <p>Start: {eventInfo.start.local}</p>
           <p>End: {eventInfo.end.local}</p>
 
-          <button className="button">Get your ticket</button>
+          <EventBriteWidget eventId={eventInfo.id} />
           <p>
             <Link href={"/events"}>Return to events</Link>
           </p>

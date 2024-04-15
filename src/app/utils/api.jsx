@@ -69,6 +69,19 @@ export const getEventsId = () => {
     });
 };
 
+export const getEventById = (event_id) => {
+  return eventbriteSite
+    .get(
+      `v3/events/${event_id}/?token=${process.env.NEXT_PUBLIC_EVENTBRITE_TOKEN}`
+    )
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
 // export const getEvents
 
 // curl -X GET   https://www.eventbriteapi.com/v3/events/{event_id}   -H 'Authorization: Bearer PERSONAL_OAUTH_TOKEN'

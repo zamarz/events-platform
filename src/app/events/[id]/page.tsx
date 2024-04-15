@@ -1,7 +1,7 @@
-import React from "react";
+import EventSingle from "@/components/EventSingle";
 
 const SingleEvent = () => {
-  return <div>Display single Event here</div>;
+  return <EventSingle />;
 };
 
 export default SingleEvent;

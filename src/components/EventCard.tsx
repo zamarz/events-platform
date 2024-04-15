@@ -1,4 +1,4 @@
-import React from "react";
+import Link from "next/link";
 
 const EventCard = ({ eventInfo }: any) => {
   console.log(eventInfo);
@@ -7,7 +7,9 @@ const EventCard = ({ eventInfo }: any) => {
       <div>
         <h2>{eventInfo.name.text}</h2>
         <p>{eventInfo.summary}</p>
-        <button className="button">View</button>
+        <button className="button">
+          <Link href={`/events/${eventInfo.id}`}>View</Link>
+        </button>
       </div>
     </div>
   );

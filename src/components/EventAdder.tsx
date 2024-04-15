@@ -12,15 +12,14 @@ const EventAdder = () => {
   const [endTime, setEndTime] = useState("");
   const [utcStart, setUtcStart] = useState("");
   const [utcEnd, setUtcEnd] = useState("");
-  const [description, setDescription] = useState("");
-  const accessToken = "E33RFTVR2MK33ATCR24M";
+  const [summary, setSummary] = useState("");
 
   const newEventToSend: EventData = {
     event: {
       name: {
         html: `${eventName}`,
       },
-      description: {
+      summary: {
         html: "",
       },
       start: {
@@ -57,12 +56,17 @@ const EventAdder = () => {
     }
   }, [endTime]);
 
+  //need some kind of message saying event added successfully or directing them to the event page
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     createEvent(newEventToSend)
       .then((response: any) => {
-        addTicketClass(response.id, ticketClass);
-        // publishEvent(response.id);
+        return addTicketClass(response.id, ticketClass);
+      })
+      .then((response: any) => {
+        publishEvent(response.event_id);
+        console.log("Event should be published");
       })
       .catch((error: Error) => {
         console.error(error);
@@ -71,7 +75,7 @@ const EventAdder = () => {
     setEventName("");
     setStartTime("");
     setEndTime("");
-    setDescription("");
+    setSummary("");
   };
 
   return (
@@ -105,8 +109,8 @@ const EventAdder = () => {
             id="description"
             name="description"
             className="w-full border border-gray-300 rounded py-7 my-2 px-4"
-            value={description}
-            onChange={(event) => setDescription(event.target.value)}
+            value={summary}
+            onChange={(event) => setSummary(event.target.value)}
           />
         </div>
         <div className="mb-4">

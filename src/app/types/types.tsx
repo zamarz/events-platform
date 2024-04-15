@@ -3,7 +3,7 @@ export type EventData = {
     name: {
       html: string;
     };
-    description: {
+    summary: {
       html: string;
     };
     start: {

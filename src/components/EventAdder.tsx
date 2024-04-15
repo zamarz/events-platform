@@ -19,9 +19,7 @@ const EventAdder = () => {
       name: {
         html: `${eventName}`,
       },
-      summary: {
-        html: "",
-      },
+      summary: "",
       start: {
         timezone: "Europe/London",
         utc: `${utcStart}`,

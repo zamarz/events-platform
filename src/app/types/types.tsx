@@ -3,9 +3,7 @@ export type EventData = {
     name: {
       html: string;
     };
-    summary: {
-      html: string;
-    };
+    summary: string;
     start: {
       timezone: string;
       utc: string;

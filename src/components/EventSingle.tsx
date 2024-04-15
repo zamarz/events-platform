@@ -45,7 +45,7 @@ const EventSingle = () => {
           <p>Start: {eventInfo.start.local}</p>
           <p>End: {eventInfo.end.local}</p>
 
-          <EventBriteWidget eventId={eventInfo.id} />
+          <EventBriteWidget eventId={eventInfo.id} eventInfo={eventInfo} />
           <p>
             <Link href={"/events"}>Return to events</Link>
           </p>

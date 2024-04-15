@@ -1,8 +1,24 @@
 "use client";
 
+import EventConfirmation from "@/app/event-confirmation/page";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-const EventBriteWidget = ({ eventId }) => {
+const EventBriteWidget = ({ eventId, eventInfo }: any) => {
+  const router = useRouter();
+
+  const setSessionStorage = () => {
+    try {
+      sessionStorage.setItem("eventId", eventId);
+      sessionStorage.setItem("name", eventInfo.name.text);
+      sessionStorage.setItem("startTime", eventInfo.start.local);
+    } catch (error) {
+      console.error(error);
+    }
+
+    router.push("/event-confirmation");
+  };
+
   useEffect(() => {
     const loadScript = () => {
       const script = document.createElement("script");
@@ -22,7 +38,7 @@ const EventBriteWidget = ({ eventId }) => {
           eventId: `${eventId}`,
           modal: true,
           modalTriggerElementId: "widget-trigger",
-          onOrderComplete: () => console.log("Order complete!"),
+          onOrderComplete: () => setSessionStorage(),
         });
       }
     };

@@ -22,16 +22,23 @@ const EventSingle = () => {
   }, []);
   console.log(eventInfo, "eventInfo on single page");
 
+  //can put a placeholder image in the below if no image included
+
   return (
     <div>
       {eventInfo ? (
         <div>
-          <Image
-            src={eventInfo.logo.url}
-            alt="An image chose by Eventbrite"
-            width={300}
-            height={300}
-          />
+          {eventInfo.logo ? (
+            <Image
+              src={eventInfo.logo.url}
+              alt="An image chose by Eventbrite"
+              width={300}
+              height={300}
+            />
+          ) : (
+            <></>
+          )}
+
           <h2>{eventInfo.name.text}</h2>
           <p>{eventInfo.summary}</p>
           <p>Start: {eventInfo.start.local}</p>

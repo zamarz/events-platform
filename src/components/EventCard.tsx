@@ -5,7 +5,7 @@ const EventCard = ({ eventInfo }: any) => {
 
   //might be an image here
   return (
-    <div className="mx-4 outline py-3">
+    <div className="mx-4 border border-primary py-3">
       <div className="flex items-center flex-wrap justify-start mx-5 px-6 py-3">
         <h2 className="text-l font-semibold">{eventInfo.name.text}</h2>
         <p className="text-pretty">{eventInfo.summary}</p>

@@ -2,7 +2,6 @@
 const EventConfirmation = () => {
   //will need integration with Google Calendar
 
-  // Retrieve in the /thank-you component
   const eventId = sessionStorage.getItem("eventId");
   const eventName = sessionStorage.getItem("name");
   const startTime = sessionStorage.getItem("startTime");

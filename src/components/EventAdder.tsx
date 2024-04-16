@@ -75,6 +75,7 @@ const EventAdder = () => {
       .then((response: any) => {
         if (response.published === true) {
           console.log("Event should be published");
+          setLoading(false);
           setShown(true);
         }
       })
@@ -86,7 +87,6 @@ const EventAdder = () => {
     setStartTime("");
     setEndTime("");
     setSummary("");
-    setLoading(false);
   };
 
   if (loading) {

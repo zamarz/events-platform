@@ -4,7 +4,7 @@ import EventsList from "./EventList";
 const HomePage = () => {
   return (
     <section className="min-h-screen px-10 py-10 mx-auto container">
-      <div className="flex items-center justify-center space-x-4 bg-tertiary-light">
+      <div className="flex items-center justify-center space-x-4 bg-tertiary-alt">
         <div className="px-4 py-4">
           <h1 className="font-bold text-2xl">Join today. Run tomorrow.</h1>
           <p className="py-4">

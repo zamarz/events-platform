@@ -5,6 +5,8 @@ import { addTicketClass, createEvent, publishEvent } from "../app/utils/api";
 import { FormEvent, useEffect, useState } from "react";
 import { UTCDate } from "@date-fns/utc";
 import { formatISO } from "date-fns";
+import Loading from "@/app/loading";
+import Link from "next/link";
 
 const EventAdder = () => {
   const [eventName, setEventName] = useState("");
@@ -13,6 +15,9 @@ const EventAdder = () => {
   const [utcStart, setUtcStart] = useState("");
   const [utcEnd, setUtcEnd] = useState("");
   const [summary, setSummary] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [eventId, setEventId] = useState("");
+  const [shown, setShown] = useState(false);
 
   const newEventToSend: EventData = {
     event: {
@@ -58,13 +63,20 @@ const EventAdder = () => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setLoading(true);
     createEvent(newEventToSend)
       .then((response: any) => {
+        setEventId(response.id);
         return addTicketClass(response.id, ticketClass);
       })
       .then((response: any) => {
-        publishEvent(response.event_id);
-        console.log("Event should be published");
+        return publishEvent(response.event_id);
+      })
+      .then((response: any) => {
+        if (response.published === true) {
+          console.log("Event should be published");
+          setShown(true);
+        }
       })
       .catch((error: Error) => {
         console.error(error);
@@ -74,12 +86,17 @@ const EventAdder = () => {
     setStartTime("");
     setEndTime("");
     setSummary("");
+    setLoading(false);
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <section className="min-h-screen mx-auto container pt-8 ">
       <form
-        className="items-center justify-center space-x-5 max-w-md mx-auto mt-5 p-4 rounded shadow bg-tertiary-alt border border-tertiary-light"
+        className="items-center justify-center max-w-md mx-auto mt-5 p-4 rounded shadow bg-tertiary-alt border border-tertiary-light"
         onSubmit={handleSubmit}
       >
         <h2 className="mb-4 text-xl font-semibold">Add a new event</h2>
@@ -142,6 +159,23 @@ const EventAdder = () => {
           Publish Event
         </button>
       </form>
+      {shown ? (
+        <div className="flex items-center justify-center bg-secondary/35 py-2 my-4 rounded max-w-md mx-auto">
+          <h2 className="mx-2 py-2">Event added successfully!</h2>
+          <button className="button mx-2 py-2" type="button">
+            <Link href={`/events/${eventId}`}>Go to event</Link>
+          </button>
+          <button
+            className="button mx-3 py-2"
+            type="button"
+            onClick={() => setShown(false)}
+          >
+            Close
+          </button>
+        </div>
+      ) : (
+        <></>
+      )}
     </section>
   );
 };

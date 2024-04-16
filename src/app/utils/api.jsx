@@ -48,7 +48,7 @@ export const publishEvent = (event_id) => {
       `v3/events/${event_id}/publish/?token=${process.env.NEXT_PUBLIC_EVENTBRITE_TOKEN}`
     )
     .then((response) => {
-      console.log(response.data);
+      return response.data;
     })
     .catch((error) => {
       console.error(error);

@@ -3,7 +3,6 @@ export type EventData = {
     name: {
       html: string;
     };
-    summary: string;
     start: {
       timezone: string;
       utc: string;
@@ -13,5 +12,11 @@ export type EventData = {
       utc: string;
     };
     currency: string;
+  };
+};
+
+export type EventSummary = {
+  event: {
+    summary: string;
   };
 };

@@ -1,7 +1,12 @@
 "use client";
 
-import { EventData } from "@/app/types/types";
-import { addTicketClass, createEvent, publishEvent } from "../app/utils/api";
+import { EventData, EventSummary } from "@/app/types/types";
+import {
+  addTicketClass,
+  createEvent,
+  publishEvent,
+  updateEvent,
+} from "../app/utils/api";
 import { FormEvent, useEffect, useState } from "react";
 import { UTCDate } from "@date-fns/utc";
 import { formatISO } from "date-fns";
@@ -24,7 +29,6 @@ const EventAdder = () => {
       name: {
         html: `${eventName}`,
       },
-      summary: "",
       start: {
         timezone: "Europe/London",
         utc: `${utcStart}`,
@@ -34,6 +38,12 @@ const EventAdder = () => {
         utc: `${utcEnd}`,
       },
       currency: "GBP",
+    },
+  };
+
+  const extraEventInfo: EventSummary = {
+    event: {
+      summary: `${summary}`,
     },
   };
 
@@ -59,8 +69,6 @@ const EventAdder = () => {
     }
   }, [endTime]);
 
-  //need some kind of message saying event added successfully or directing them to the event page
-
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setLoading(true);
@@ -70,7 +78,10 @@ const EventAdder = () => {
         return addTicketClass(response.id, ticketClass);
       })
       .then((response: any) => {
-        return publishEvent(response.event_id);
+        return updateEvent(response.event_id, extraEventInfo);
+      })
+      .then((response: any) => {
+        return publishEvent(response.id);
       })
       .then((response: any) => {
         if (response.published === true) {

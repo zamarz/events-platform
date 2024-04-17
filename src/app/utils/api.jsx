@@ -27,6 +27,21 @@ export const createEvent = (event) => {
     });
 };
 
+export const updateEvent = (eventId, eventInfo) => {
+  return eventbriteSite
+    .post(
+      `v3/events/${eventId}/?token=${process.env.NEXT_PUBLIC_EVENTBRITE_TOKEN}`,
+      eventInfo
+    )
+    .then((response) => {
+      console.log(response.data);
+      return response.data;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
 export const addTicketClass = (event_id, ticketClass) => {
   return eventbriteSite
     .post(

@@ -100,7 +100,7 @@ export const getEventById = (event_id) => {
 //need to check if need this
 export const createGoogleEvent = async (eventData) => {
   try {
-    const response = await fetch("/api/calendar/createEvent", {
+    const response = await fetch("./createEvent", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -16,7 +16,9 @@ export default async function calendarHandler(req, res) {
 
     // Assuming your access token is stored in session or database and retrieved here
     // Set this according to your authentication flow
-    auth.setCredentials({ token: "YOUR_ACCESS_TOKEN" });
+    auth.setCredentials({
+      token: "",
+    });
 
     const calendar = google.calendar({ version: "v3", auth });
 

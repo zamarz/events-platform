@@ -24,7 +24,7 @@ const EventConfirmation = () => {
   };
 
   // Example call
-  createGoogleEvent(eventDataToSend2);
+  // createGoogleEvent(eventDataToSend2);
 
   return (
     <div>
@@ -33,7 +33,10 @@ const EventConfirmation = () => {
           Great, you're all signed up for {eventName} which begins on{" "}
           {startTime}!
         </h2>
-        <button className="button" onClick={() => createEvent(eventDataToSend)}>
+        <button
+          className="button"
+          onClick={() => createGoogleEvent(eventDataToSend)}
+        >
           Add to your Google Calendar
         </button>
       </div>

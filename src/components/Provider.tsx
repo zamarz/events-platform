@@ -10,3 +10,4 @@ import { GoogleAuthProvider } from "firebase/auth";
 // export default Provider;
 
 export const provider = new GoogleAuthProvider();
+provider.addScope("https://www.googleapis.com/auth/calendar.readonly");

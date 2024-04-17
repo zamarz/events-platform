@@ -13,25 +13,30 @@ import UserContext from "../context/UserContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
+type RootLayoutProps = {
+  children: React.ReactNode;
+};
+
 const metadata: Metadata = {
   title: "Run together",
   description: "Find your next running group",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  const [user, setUser] = useState({ email: "", uid: "" });
+export default function RootLayout({ children }: RootLayoutProps) {
+  const [user, setUser] = useState({
+    email: "",
+    uid: "",
+    accessToken: "",
+    photoURL: "",
+  });
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (userData) => {
       if (userData) {
-        const { email, uid } = userData;
-        setUser({ email, uid });
+        const { email, uid, accessToken, photoURL } = userData;
+        setUser({ email, uid, accessToken, photoURL });
       } else {
-        setUser({ email: "", uid: "" });
+        setUser({ email: "", uid: "", accessToken: "", photoURL: "" });
       }
     });
 

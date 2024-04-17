@@ -97,9 +97,27 @@ export const getEventById = (event_id) => {
     });
 };
 
-// export const getEvents
+//need to check if need this
+export const createGoogleEvent = async (eventData) => {
+  try {
+    const response = await fetch("/api/calendar/createEvent", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(eventData),
+    });
 
-// curl -X GET   https://www.eventbriteapi.com/v3/events/{event_id}   -H 'Authorization: Bearer PERSONAL_OAUTH_TOKEN'
+    if (!response.ok) {
+      throw new Error("Failed to create event");
+    }
+
+    const data = await response.json();
+    console.log("Event created:", data);
+  } catch (error) {
+    console.error("Error creating event:", error);
+  }
+};
 
 //not needed for now
 export const authorizeUser = (code) => {

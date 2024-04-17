@@ -5,6 +5,7 @@ import { auth } from "../../firebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { signInWithGoogle } from "@/app/utils/functions";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -66,6 +67,9 @@ const SignIn = () => {
           Sign In
         </button>
       </form>
+      <button className="button" onClick={() => signInWithGoogle()}>
+        Sign in with Google
+      </button>
       <div className="justify-center items-center space-x-5 max-w-md mx-auto mt-5 p-4">
         <p className="text-l">
           Need to register? Click{" "}

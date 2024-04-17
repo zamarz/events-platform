@@ -6,6 +6,8 @@ import { FormEvent, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Loading from "@/app/loading";
+import { signIn } from "next-auth/react";
+import { signInWithGoogle } from "@/app/utils/functions";
 
 const RegisterUser = () => {
   const [email, setEmail] = useState("");
@@ -74,6 +76,7 @@ const RegisterUser = () => {
           Sign Up
         </button>
       </form>
+      <button onClick={() => signInWithGoogle()}>Sign in with Google</button>
       <div className="justify-center items-center space-x-5 max-w-md mx-auto mt-5 p-4">
         <p className="text-l">
           Already registered? Click{" "}

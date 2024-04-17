@@ -6,6 +6,8 @@ import Link from "next/link";
 import { useContext } from "react";
 import { MdDarkMode, MdOutlineLightMode } from "react-icons/md";
 import { auth } from "../../firebaseConfig";
+import { useSession } from "next-auth/react";
+import { signUserOut } from "@/app/utils/functions";
 
 const Header = () => {
   const { darkTheme, setDarkTheme } = useContext(ThemeContext);
@@ -40,6 +42,7 @@ const Header = () => {
               />
             )}
           </li>
+          {/* {session ? <li>Hi {session.user.email}</li> : <li>Please sign in</li>} */}
           {user.email.length > 0 ? (
             <li className="mx-auto px-7">
               <p>Hi {user.email}!</p>
@@ -86,7 +89,7 @@ const Header = () => {
             <button
               className="button"
               type="button"
-              onClick={() => signOut(auth)}
+              onClick={() => signUserOut()}
             >
               Sign Out
             </button>

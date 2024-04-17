@@ -1,15 +1,24 @@
 "use client";
 
+import { eventStartDateGetter } from "@/app/utils/functions";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { CiCalendarDate } from "react-icons/ci";
+import { FaPoundSign } from "react-icons/fa";
 
 const EventCard = ({ eventInfo }: any) => {
+  const [eventStartDate, setEventStartDate] = useState("");
+  const style1 = { fontSize: "1.5em" };
   console.log(eventInfo);
 
-  //might be an image here
+  useEffect(() => {
+    eventStartDateGetter(eventInfo, setEventStartDate);
+  });
+
   return (
     <div className="mx-4 border border-primary py-3">
-      <div className="flex items-center flex-wrap justify-start mx-5 px-6 py-3">
+      <div className="flex items-center flex-col mx-5 px-6 py-3">
         {eventInfo.logo ? (
           <Image
             src={`${eventInfo.logo.url}`}
@@ -27,11 +36,23 @@ const EventCard = ({ eventInfo }: any) => {
             layout="responsive"
           />
         )}
-        <h2 className="text-l font-semibold">{eventInfo.name.text}</h2>
-        <p className="text-pretty">{eventInfo.summary}</p>
-        <p className="px-2">{eventInfo.start.local}</p>
+        <h2 className="text-xl font-semibold py-2">{eventInfo.name.text}</h2>
+        <p className="text-pretty py-2">{eventInfo.summary}</p>
+        <div className="py-2 flex flex-row space-x-2">
+          <div className="px-1 flex items-center">
+            <CiCalendarDate style={style1} />
+          </div>
+          <div className="flex items-center">{eventStartDate}</div>
+        </div>
         {eventInfo.is_free === true ? (
-          <p className="font-bold text-primary px-2">FREE</p>
+          <div className=" py-2 flex flex-row">
+            <div className="px-1 flex items-center">
+              <FaPoundSign />
+            </div>
+            <div className="font-bold text-primary dark:text-tertiary-dark text-xl flex items-center">
+              Free
+            </div>
+          </div>
         ) : (
           <></>
         )}

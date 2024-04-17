@@ -54,7 +54,7 @@ const EventBriteWidget = ({ eventId, eventInfo }: any) => {
   }, []);
 
   return (
-    <button className="button" id="widget-trigger" type="button">
+    <button className="buttonEB" id="widget-trigger" type="button">
       Buy Tickets
     </button>
   );

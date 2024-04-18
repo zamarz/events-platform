@@ -38,3 +38,4 @@ next-env.d.ts
 
 #google
 credentials.json
+token.json

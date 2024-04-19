@@ -29,7 +29,6 @@ const EventSingle = () => {
         console.error(error);
       });
   }, []);
-  console.log(eventInfo, "eventInfo on single page");
 
   return (
     <section className="min-h-screen px-10 py-10 mx-auto container">

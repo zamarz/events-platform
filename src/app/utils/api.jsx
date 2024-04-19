@@ -76,7 +76,6 @@ export const getEventsId = () => {
       `v3/organizations/${process.env.NEXT_PUBLIC_EVENTBRITE_ORGANIZATION_ID}/events/?token=${process.env.NEXT_PUBLIC_EVENTBRITE_TOKEN}`
     )
     .then((response) => {
-      console.log(response.data);
       return response.data;
     })
     .catch((error) => {

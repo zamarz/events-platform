@@ -9,12 +9,12 @@ const HomeImage = () => {
   return (
     <div>
       {user.email.length > 0 ? (
-        <div className="flex items-center justify-center space-x-4 bg-tertiary-alt">
+        <div className="flex items-center justify-center space-x-4 bg-tertiary-alt dark:bg-tertiary-light/70 ">
           <div className="px-4 py-4">
-            <h1 className="font-bold lg:text-2xl dark:text-primary">
+            <h1 className="font-bold lg:text-2xl dark:text-white">
               Build your running community
             </h1>
-            <p className="py-4 dark:text-primary">
+            <p className="py-4 dark:text-white">
               Find your next running event today.
             </p>
             <button className="button">

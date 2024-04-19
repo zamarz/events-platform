@@ -10,7 +10,6 @@ import { FaPoundSign } from "react-icons/fa";
 const EventCard = ({ eventInfo }: any) => {
   const [eventStartDate, setEventStartDate] = useState("");
   const style1 = { fontSize: "1.5em" };
-  console.log(eventInfo);
 
   useEffect(() => {
     eventStartDateGetter(eventInfo, setEventStartDate);
@@ -49,7 +48,7 @@ const EventCard = ({ eventInfo }: any) => {
             <div className="px-1 flex items-center">
               <FaPoundSign />
             </div>
-            <div className="font-bold text-primary dark:text-tertiary-dark text-xl flex items-center">
+            <div className="font-bold text-primary dark:text-tertiary-dark text-l flex items-center">
               Free
             </div>
           </div>

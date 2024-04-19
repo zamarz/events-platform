@@ -1,6 +1,9 @@
+"use client";
 import { google } from "googleapis";
+import { NextApiRequest, NextApiResponse } from "next";
 
-export default async function calendarHandler(req, res) {
+export async function POST(req: NextApiRequest, res: NextApiResponse) {
+  const token = sessionStorage.getItem("token");
   if (req.method !== "POST") {
     return res.status(405).json({ message: "Method not allowed" });
   }
@@ -11,14 +14,16 @@ export default async function calendarHandler(req, res) {
     // OAuth2 client setup
     const auth = new google.auth.OAuth2(
       process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_CLIENT_ID,
-      process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_CLIENT_SECRET
+      process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_CLIENT_SECRET,
+      "https://developers.google.com/oauthplayground"
     );
 
     // Assuming your access token is stored in session or database and retrieved here
     // Set this according to your authentication flow
-    auth.setCredentials({
-      token: "",
-    });
+    const accessToken = req.body.accessToken;
+    // auth.setCredentials({
+    //   token: token,
+    // });
 
     const calendar = google.calendar({ version: "v3", auth });
 

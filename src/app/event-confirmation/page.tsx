@@ -35,7 +35,7 @@ const EventConfirmation = () => {
         </h2>
         <button
           className="button"
-          onClick={() => createGoogleEvent(eventDataToSend)}
+          onClick={() => createGoogleEvent(eventDataToSend2)}
         >
           Add to your Google Calendar
         </button>

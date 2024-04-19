@@ -29,7 +29,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
     accessToken: "",
     photoURL: "",
   });
-
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (userData) => {
       if (userData) {

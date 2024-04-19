@@ -100,17 +100,17 @@ export const getEventById = (event_id) => {
 //need to check if need this
 export const createGoogleEvent = async (eventData) => {
   try {
-    const response = await fetch("./createEvent", {
+    const response = await fetch("/api/createEvents", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(eventData),
     });
-
     if (!response.ok) {
       throw new Error("Failed to create event");
     }
+    console.log(response);
 
     const data = await response.json();
     console.log("Event created:", data);

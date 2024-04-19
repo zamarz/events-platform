@@ -8,12 +8,15 @@ const EventConfirmation = () => {
   const eventId = sessionStorage.getItem("eventId");
   const eventName = sessionStorage.getItem("name");
   const startTime = sessionStorage.getItem("startTime");
+  const token = JSON.parse(sessionStorage.getItem("token"));
 
+  console.log(token, "token");
   const eventDataToSend = {
     eventName: eventName,
     summary: null,
     startDateTime: startTime,
     endDateTime: null,
+    accessToken: token,
   };
 
   const eventDataToSend2 = {

@@ -32,8 +32,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (userData) => {
       if (userData) {
-        const { email, uid, accessToken, photoURL } = userData;
-        setUser({ email, uid, accessToken, photoURL });
+        const { email, uid, photoURL } = userData;
+        setUser({ email, uid, photoURL });
       } else {
         setUser({ email: "", uid: "", accessToken: "", photoURL: "" });
       }

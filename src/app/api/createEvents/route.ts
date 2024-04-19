@@ -1,29 +1,33 @@
-"use client";
 import { google } from "googleapis";
 import { NextApiRequest, NextApiResponse } from "next";
+import { NextResponse } from "next/server";
 
 export async function POST(req: NextApiRequest, res: NextApiResponse) {
-  const token = sessionStorage.getItem("token");
+  console.log("hello there, we're in the POST function");
+
   if (req.method !== "POST") {
-    return res.status(405).json({ message: "Method not allowed" });
+    return NextResponse.json(
+      { message: "Method not allowed" },
+      { status: 405 }
+    );
   }
 
   try {
-    const { eventName, summary, startDateTime, endDateTime } = req.body;
+    const { eventName, summary, startDateTime, endDateTime, accessToken } =
+      req.body;
 
     // OAuth2 client setup
     const auth = new google.auth.OAuth2(
       process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_CLIENT_ID,
       process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_CLIENT_SECRET,
-      "https://developers.google.com/oauthplayground"
+      "http://localhost:3000"
     );
 
     // Assuming your access token is stored in session or database and retrieved here
     // Set this according to your authentication flow
-    const accessToken = req.body.accessToken;
-    // auth.setCredentials({
-    //   token: token,
-    // });
+    auth.setCredentials({
+      access_token: accessToken,
+    });
 
     const calendar = google.calendar({ version: "v3", auth });
 
@@ -45,9 +49,13 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
       requestBody: event,
     });
 
-    res.status(200).json({ message: "Event created", event: response.data });
+    return NextResponse.json(
+      { message: "Event created", event: response.data },
+      { status: 200 }
+    );
   } catch (error) {
+    console.log("error erro error");
     console.error("Error creating calendar event:", error);
-    res.status(500).json({ error: error.message });
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

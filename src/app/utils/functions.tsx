@@ -36,9 +36,10 @@ export const signInWithGoogle = () => {
     .then((result) => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       console.log(result, "result");
-      const token = credential.accessToken;
-      sessionStorage.setItem("token", token);
-      // The signed-in user info.
+      console.log(credential);
+      const token = result.user.stsTokenManager;
+      sessionStorage.setItem("token", JSON.stringify(token));
+
       const user = result.user;
       // IdP data available using getAdditionalUserInfo(result)
       // ...

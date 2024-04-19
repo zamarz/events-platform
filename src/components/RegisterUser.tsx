@@ -41,7 +41,7 @@ const RegisterUser = () => {
     <section className="min-h-screen mx-auto container pt-8 ">
       <form
         onSubmit={handleSubmit}
-        className="items-center justify-center space-x-5 max-w-md mx-auto mt-5 p-4 rounded shadow bg-tertiary-alt border border-tertiary-light"
+        className="items-center justify-center space-x-5 max-w-md mx-auto mt-5 p-4 rounded shadow bg-tertiary-alt border border-tertiary-light dark:bg-primary dark:border-secondary"
       >
         <h2 className="mb-4 text-xl font-semibold">Register</h2>
         <div className="mb-4">
@@ -67,20 +67,28 @@ const RegisterUser = () => {
             placeholder="Enter a password"
             id="password"
             name="password"
-            className="w-full border border-gray-300 rounded py-7 my-2 px-4"
+            className="w-full border border-gray-300 rounded py-2 my-2 px-4"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
         </div>
-        <button className="button" type="submit">
+        <button className="buttonHeader" type="submit">
           Sign Up
         </button>
       </form>
-      <button onClick={() => signInWithGoogle()}>Sign in with Google</button>
-      <div className="justify-center items-center space-x-5 max-w-md mx-auto mt-5 p-4">
+      <div className="flex justify-center items-center max-w-md mx-auto mt-5">
+        <button className="button " onClick={() => signInWithGoogle()}>
+          Sign in with Google
+        </button>
+      </div>
+
+      <div className="flex justify-center items-center space-x-5 max-w-md mx-auto mt-5 p-4">
         <p className="text-l">
           Already registered? Click{" "}
-          <Link href="/sign-in" className="underline shadow">
+          <Link
+            href="/sign-in"
+            className="underline shadow bg-tertiary-alt hover:bg-tertiary-light dark:bg-primary dark:hover:bg-tertiary-light/70"
+          >
             here to sign in
           </Link>
           .

@@ -19,21 +19,33 @@ const EventCard = ({ eventInfo }: any) => {
     <div className="mx-4 border border-primary py-3">
       <div className="flex items-center flex-col mx-5 px-6 py-3">
         {eventInfo.logo ? (
-          <Image
-            src={`${eventInfo.logo.url}`}
-            alt="An image of a person running"
-            width={200}
-            height={200}
-            layout="responsive"
-          />
+          <div
+            style={{ position: "relative", width: "250px", height: "250px" }}
+          >
+            <Image
+              src={`${eventInfo.logo.url}`}
+              alt="An image of a person running"
+              sizes="300px"
+              fill={true}
+              style={{
+                objectFit: "contain",
+              }}
+            />
+          </div>
         ) : (
-          <Image
-            src={"/assets/running-person-placeholder.jpg"}
-            alt="An image of a person running on a road"
-            width={200}
-            height={200}
-            layout="responsive"
-          />
+          <div
+            style={{ position: "relative", width: "250px", height: "250px" }}
+          >
+            <Image
+              src={"/assets/running-person-placeholder.jpg"}
+              alt="An image of a person running on a road"
+              sizes="300px"
+              fill={true}
+              style={{
+                objectFit: "contain",
+              }}
+            />
+          </div>
         )}
         <h2 className="text-xl font-semibold py-2">{eventInfo.name.text}</h2>
         <p className="text-pretty py-2">{eventInfo.summary}</p>

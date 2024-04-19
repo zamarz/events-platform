@@ -9,7 +9,7 @@ const HomeImage = () => {
   return (
     <div>
       {user.email.length > 0 ? (
-        <div className="flex items-center justify-center space-x-4 bg-tertiary-alt dark:bg-tertiary-light/70 ">
+        <div className="flex flex-wrap-reverse md:flex-none items-center justify-center bg-tertiary-alt dark:bg-tertiary-light/70 ">
           <div className="px-4 py-4">
             <h1 className="font-bold lg:text-2xl dark:text-white">
               Build your running community
@@ -22,7 +22,7 @@ const HomeImage = () => {
             </button>
           </div>
           <div
-            style={{ position: "relative", width: "500px", height: "500px" }}
+            style={{ position: "relative", width: "300px", height: "300px" }}
           >
             <Image
               src={"/assets/running-group-2.jpg"}
@@ -37,7 +37,7 @@ const HomeImage = () => {
           </div>
         </div>
       ) : (
-        <div className="flex items-center justify-center space-x-4 bg-tertiary-alt dark:bg-tertiary-light/90">
+        <div className="flex flex-wrap-reverse md:flex-none items-center justify-center bg-tertiary-alt dark:bg-tertiary-light/90 mx-auto">
           <div className="px-4 py-4">
             <h1 className="font-bold lg:text-2xl dark:text-white">
               Join today. Run tomorrow.
@@ -48,7 +48,7 @@ const HomeImage = () => {
             <button className="button">Sign up</button>
           </div>
           <div
-            style={{ position: "relative", width: "500px", height: "500px" }}
+            style={{ position: "relative", width: "300px", height: "300px" }}
           >
             <Image
               src={"/assets/running-arrow.jpg"}

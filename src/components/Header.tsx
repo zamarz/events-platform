@@ -14,7 +14,6 @@ const Header = () => {
   const { darkTheme, setDarkTheme } = useContext(ThemeContext);
   const user = useContext(UserContext);
   const [open, setOpen] = useState(false);
-  console.log(open);
 
   return (
     <header>

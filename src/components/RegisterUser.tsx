@@ -38,7 +38,7 @@ const RegisterUser = () => {
   };
 
   return (
-    <section className="min-h-screen mx-auto container pt-8 ">
+    <section className="min-h-screen mx-auto container pt-8">
       <form
         onSubmit={handleSubmit}
         className="items-center justify-center space-x-5 max-w-md mx-auto mt-5 p-4 rounded shadow bg-tertiary-alt border border-tertiary-light dark:bg-primary dark:border-secondary"

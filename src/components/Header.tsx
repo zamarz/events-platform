@@ -74,10 +74,10 @@ const Header = () => {
         )}
         {user.email.length === 0 ? (
           <li className="space-x-3">
-            <Link className="button" href="/register">
+            <Link className="buttonHeader" href="/register">
               Register
             </Link>
-            <Link className="button" href="/sign-in">
+            <Link className="buttonHeader" href="/sign-in">
               Sign In
             </Link>
           </li>

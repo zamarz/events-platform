@@ -9,3 +9,7 @@
 .buttonEB {
   @apply bg-primary dark:bg-secondary text-white px-4 py-2 mt-3 mb-3 rounded shadow dark:hover:bg-primary hover:bg-blue-400 active:bg-blue-600 focus:outline-none;
 }
+
+.buttonHeader {
+  @apply bg-tertiary-dark text-white px-4 py-2 mt-3 mb-3 rounded shadow hover:bg-secondary active:bg-blue-600 focus:outline-none;
+}

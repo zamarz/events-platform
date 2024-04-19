@@ -32,12 +32,12 @@ const HomeImage = () => {
           />
         </div>
       ) : (
-        <div className="flex items-center justify-center space-x-4 bg-tertiary-alt">
+        <div className="flex items-center justify-center space-x-4 dark:bg-tertiary-light/90">
           <div className="px-4 py-4">
-            <h1 className="font-bold lg:text-2xl dark:text-primary">
+            <h1 className="font-bold lg:text-2xl dark:text-white">
               Join today. Run tomorrow.
             </h1>
-            <p className="py-4 dark:text-primary">
+            <p className="py-4 dark:text-white">
               Register and get access to hundreds of running groups near you.
             </p>
             <button className="button">Sign up</button>

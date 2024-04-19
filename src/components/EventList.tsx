@@ -26,7 +26,7 @@ const EventsList = () => {
   }
 
   return (
-    <section className="min-h-screen px-10 py-10 mx-auto container">
+    <section className="w-full mx-auto container">
       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 mx-auto gap-4 py-3">
         {eventsData ? (
           eventsData.events.map((event: any) => {

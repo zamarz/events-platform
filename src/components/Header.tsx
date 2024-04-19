@@ -69,6 +69,7 @@ const Header = () => {
               <Link
                 href="/"
                 className="py-2 block text-sm md:text-base lg:text-lg"
+                onClick={() => setOpen(!open)}
               >
                 About
               </Link>
@@ -77,6 +78,7 @@ const Header = () => {
               <Link
                 href="/events"
                 className=" py-2 block text-sm md:text-base lg:text-lg"
+                onClick={() => setOpen(!open)}
               >
                 Events
               </Link>
@@ -86,6 +88,7 @@ const Header = () => {
                 <Link
                   href="/addevent"
                   className="py-2 block text-sm md:text-base lg:text-lg"
+                  onClick={() => setOpen(!open)}
                 >
                   Create New Event
                 </Link>
@@ -95,10 +98,18 @@ const Header = () => {
             )}
             {user.email.length === 0 ? (
               <li className="space-x-3 py-2 block">
-                <Link className="buttonHeader" href="/register">
+                <Link
+                  className="buttonHeader"
+                  href="/register"
+                  onClick={() => setOpen(!open)}
+                >
                   Register
                 </Link>
-                <Link className="buttonHeader" href="/sign-in">
+                <Link
+                  className="buttonHeader"
+                  href="/sign-in"
+                  onClick={() => setOpen(!open)}
+                >
                   Sign In
                 </Link>
               </li>

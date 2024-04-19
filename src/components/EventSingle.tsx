@@ -35,19 +35,34 @@ const EventSingle = () => {
       {eventInfo ? (
         <div className="items-center justify-center flex flex-col">
           {eventInfo.logo ? (
-            <Image
-              src={eventInfo.logo.url}
-              alt="An image chose by Eventbrite"
-              width={400}
-              height={400}
-            />
+            <div
+              style={{ position: "relative", width: "500px", height: "500px" }}
+            >
+              <Image
+                src={eventInfo.logo.url}
+                alt="An image chose by Eventbrite"
+                sizes="300px"
+                fill={true}
+                style={{
+                  objectFit: "contain",
+                }}
+              />
+            </div>
           ) : (
-            <Image
-              src={"/assets/running-person-placeholder.jpg"}
-              alt="An image of a person running on a road"
-              width={400}
-              height={400}
-            />
+            <div
+              style={{ position: "relative", width: "400px", height: "400px" }}
+            >
+              <Image
+                src={"/assets/running-person-placeholder.jpg"}
+                alt="An image of a person running on a road"
+                sizes="300px"
+                fill={true}
+                priority
+                style={{
+                  objectFit: "contain",
+                }}
+              />
+            </div>
           )}
 
           <h2 className="text-2xl font-semibold mx-auto py-3">

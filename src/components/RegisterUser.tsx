@@ -14,6 +14,7 @@ const RegisterUser = () => {
   const [password, setPassword] = useState("");
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   if (loading) {
     return <Loading />;
@@ -31,6 +32,7 @@ const RegisterUser = () => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        setError(true);
         console.log(errorCode);
         console.log(errorMessage);
       });
@@ -72,6 +74,22 @@ const RegisterUser = () => {
             onChange={(event) => setPassword(event.target.value)}
           />
         </div>
+        {error ? (
+          <div className="flex flex-col items-center justify-center bg-tertiary-dark/60 py-2 my-4 rounded max-w-md mx-auto px-2">
+            <h2 className="mx-2 py-2">
+              Your password needs to be at least 6 characters long.
+            </h2>
+            <button
+              className="button mx-auto"
+              type="button"
+              onClick={() => setError(false)}
+            >
+              Close
+            </button>
+          </div>
+        ) : (
+          <></>
+        )}
         <button className="buttonHeader" type="submit">
           Sign Up
         </button>

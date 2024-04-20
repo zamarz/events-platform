@@ -69,7 +69,7 @@ const EventSingle = () => {
           <h2 className="text-2xl font-semibold mx-auto py-3">
             {eventInfo.name.text}
           </h2>
-          <p className="test-pretty py-3 w-2/3">{eventInfo.summary}</p>
+          <p className="text-pretty py-3 px-5">{eventInfo.summary}</p>
           <p className="py-3">
             <span className="font-semibold">Start:</span> {eventStartDate}
           </p>

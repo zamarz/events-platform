@@ -10,6 +10,7 @@ import { signInWithGoogle } from "@/app/utils/functions";
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
   const router = useRouter();
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -23,8 +24,7 @@ const SignIn = () => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode);
-        console.log(errorMessage);
+        setError(true);
       });
   };
 
@@ -63,7 +63,28 @@ const SignIn = () => {
             onChange={(event) => setPassword(event.target.value)}
           />
         </div>
-        <button className="buttonHeader" type="submit">
+        {error ? (
+          <div className="flex flex-col items-center justify-center bg-tertiary-dark/60 py-2 my-4 rounded max-w-md mx-auto px-2">
+            <h2 className="mx-2 py-2">
+              There was an issue with your username or password, please try
+              again.
+            </h2>
+            <button
+              className="button mx-auto"
+              type="button"
+              onClick={() => setError(false)}
+            >
+              Close
+            </button>
+          </div>
+        ) : (
+          <></>
+        )}
+        <button
+          className="buttonHeader"
+          type="submit"
+          onClick={() => setError(false)}
+        >
           Sign In
         </button>
       </form>

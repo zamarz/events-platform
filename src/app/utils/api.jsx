@@ -1,3 +1,5 @@
+import Error from "../error";
+
 const axios = require("axios");
 
 const eventbriteSite = axios.create({
@@ -8,21 +10,23 @@ const eventAuthSite = axios.create({
   baseURL: "https://www.eventbrite.com/oauth/token",
 });
 
-const organizationID = "2095981963553";
-
 export const createEvent = (event) => {
   return eventbriteSite
-    .post(`v3/organizations/${organizationID}/events/`, event, {
-      headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_EVENTBRITE_TOKEN}`,
-        Accept: "application/json",
-      },
-    })
+    .post(
+      `v3/organizations/${process.env.NEXT_PUBLIC_EVENTBRITE_ORGANIZATION_ID}/events/`,
+      event,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_EVENTBRITE_TOKEN}`,
+          Accept: "application/json",
+        },
+      }
+    )
     .then((response) => {
       return response.data;
     })
     .catch((error) => {
-      console.error(error);
+      return <Error />;
     });
 };
 
@@ -36,7 +40,7 @@ export const updateEvent = (eventId, eventInfo) => {
       return response.data;
     })
     .catch((error) => {
-      console.error(error);
+      return <Error />;
     });
 };
 
@@ -50,7 +54,7 @@ export const addTicketClass = (event_id, ticketClass) => {
       return response.data;
     })
     .catch((error) => {
-      console.error(error);
+      return <Error />;
     });
 };
 
@@ -63,7 +67,7 @@ export const publishEvent = (event_id) => {
       return response.data;
     })
     .catch((error) => {
-      console.error(error);
+      return <Error />;
     });
 };
 
@@ -76,7 +80,7 @@ export const getEventsId = () => {
       return response.data;
     })
     .catch((error) => {
-      console.error(error);
+      return <Error />;
     });
 };
 
@@ -89,7 +93,7 @@ export const getEventById = (event_id) => {
       return response.data;
     })
     .catch((error) => {
-      console.error(error);
+      return <Error />;
     });
 };
 

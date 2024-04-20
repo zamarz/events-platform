@@ -46,7 +46,7 @@ const Header = () => {
               )}
             </li>
             {user.email.length > 0 ? (
-              <li className="mx-auto px-7">
+              <li className="mx-auto pl-7 ml-2 hidden md:block">
                 <p>Hi {user.email}!</p>
               </li>
             ) : (
@@ -68,7 +68,7 @@ const Header = () => {
             <li className="hover:text-tertiary-alt ">
               <Link
                 href="/"
-                className="py-2 block text-sm md:text-base lg:text-lg"
+                className="py-2 block text-base lg:text-lg"
                 onClick={() => setOpen(!open)}
               >
                 About
@@ -77,7 +77,7 @@ const Header = () => {
             <li className="hover:text-tertiary-alt ">
               <Link
                 href="/events"
-                className=" py-2 block text-sm md:text-base lg:text-lg"
+                className=" py-2 mt-2 md:mt-0 block text-base lg:text-lg"
                 onClick={() => setOpen(!open)}
               >
                 Events
@@ -87,7 +87,7 @@ const Header = () => {
               <li className="hover:text-tertiary-alt ">
                 <Link
                   href="/addevent"
-                  className="py-2 block text-sm md:text-base lg:text-lg"
+                  className="py-2 mt-2 md:mt-0 block text-base lg:text-lg"
                   onClick={() => setOpen(!open)}
                 >
                   Create New Event
@@ -97,7 +97,7 @@ const Header = () => {
               <></>
             )}
             {user.email.length === 0 ? (
-              <li className="space-x-3 py-2 block">
+              <li className="space-x-4 py-2 mt-3 md:mt-0 block">
                 <Link
                   className="buttonHeader"
                   href="/register"
@@ -117,11 +117,14 @@ const Header = () => {
               <></>
             )}
             {user.email.length > 0 ? (
-              <li>
+              <li className="mt-4 md:mt-0 block">
                 <button
-                  className="button"
+                  className="buttonSignOut"
                   type="button"
-                  onClick={() => signUserOut()}
+                  onClick={() => {
+                    setOpen(!open);
+                    signUserOut();
+                  }}
                 >
                   Sign Out
                 </button>

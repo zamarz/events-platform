@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { createGoogleEvent } from "../utils/api";
 
 const EventConfirmation = () => {
@@ -30,9 +31,9 @@ const EventConfirmation = () => {
   // createGoogleEvent(eventDataToSend2);
 
   return (
-    <div>
-      <div>
-        <h2>
+    <section className="flex items-center justify-center mx-auto container w-full min-h-screen">
+      <div className="flex flex-col justify-center mx-auto items-center">
+        <h2 className="text-lg md:text-xl mx-auto py-6 text-pretty px-3">
           Great, you're all signed up for {eventName} which begins on{" "}
           {startTime}!
         </h2>
@@ -42,8 +43,13 @@ const EventConfirmation = () => {
         >
           Add to your Google Calendar
         </button>
+        <button className="button">
+          <Link className="button" href="/events">
+            See all events
+          </Link>
+        </button>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -12,6 +12,7 @@ import { UTCDate } from "@date-fns/utc";
 import { formatISO } from "date-fns";
 import Loading from "@/app/loading";
 import Link from "next/link";
+import Error from "@/app/error";
 
 const EventAdder = () => {
   const [eventName, setEventName] = useState("");
@@ -23,6 +24,7 @@ const EventAdder = () => {
   const [loading, setLoading] = useState(false);
   const [eventId, setEventId] = useState("");
   const [shown, setShown] = useState(false);
+  const [error, setError] = useState(false);
 
   const newEventToSend: EventData = {
     event: {
@@ -85,13 +87,13 @@ const EventAdder = () => {
       })
       .then((response: any) => {
         if (response.published === true) {
-          console.log("Event should be published");
           setLoading(false);
           setShown(true);
         }
       })
       .catch((error: Error) => {
-        console.error(error);
+        setError(true);
+        setLoading(false);
       });
 
     setEventName("");
@@ -102,6 +104,9 @@ const EventAdder = () => {
 
   if (loading) {
     return <Loading />;
+  }
+  if (error) {
+    return <Error />;
   }
 
   return (

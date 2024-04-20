@@ -19,7 +19,6 @@ export const createEvent = (event) => {
       },
     })
     .then((response) => {
-      console.log(response.data);
       return response.data;
     })
     .catch((error) => {
@@ -34,7 +33,6 @@ export const updateEvent = (eventId, eventInfo) => {
       eventInfo
     )
     .then((response) => {
-      console.log(response.data);
       return response.data;
     })
     .catch((error) => {
@@ -49,7 +47,6 @@ export const addTicketClass = (event_id, ticketClass) => {
       ticketClass
     )
     .then((response) => {
-      console.log(response.data);
       return response.data;
     })
     .catch((error) => {

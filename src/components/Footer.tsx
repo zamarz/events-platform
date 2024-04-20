@@ -15,7 +15,7 @@ const Footer = () => {
           <div className="space-y-2 flex items-center">
             <RiBookMarkLine style={style} />
             <h4 className="font-semibold px-3">
-              <Link href="/">About</Link>
+              <Link href="/about">About</Link>
             </h4>
           </div>
           <div className="space-y-2 flex items-center">

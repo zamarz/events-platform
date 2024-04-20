@@ -3,7 +3,6 @@ import Link from "next/link";
 import HomeImage from "./HomeImage";
 
 const HomePage = () => {
-  // need different image depending on if you are signed in or not...
   return (
     <section className="min-h-screen px-10 py-10 mx-auto container">
       <HomeImage />

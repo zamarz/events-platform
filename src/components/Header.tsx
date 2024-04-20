@@ -67,7 +67,7 @@ const Header = () => {
             {/* space-x-9 items-center justify-end */}
             <li className="hover:text-tertiary-alt ">
               <Link
-                href="/"
+                href="/about"
                 className="py-2 block text-base lg:text-lg"
                 onClick={() => setOpen(!open)}
               >

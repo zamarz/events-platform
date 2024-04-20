@@ -45,7 +45,9 @@ const HomeImage = () => {
             <p className="py-4 dark:text-white">
               Register and get access to hundreds of running groups near you.
             </p>
-            <button className="button">Sign up</button>
+            <button className="button">
+              <Link href="/register">Sign up</Link>
+            </button>
           </div>
           <div
             style={{ position: "relative", width: "300px", height: "300px" }}

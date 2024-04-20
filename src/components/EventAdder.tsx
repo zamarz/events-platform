@@ -105,9 +105,9 @@ const EventAdder = () => {
   }
 
   return (
-    <section className="min-h-screen mx-auto container pt-8 ">
+    <section className="min-h-screen mx-auto container pt-8 px-2 ">
       <form
-        className="items-center justify-center max-w-md mx-auto mt-5 p-4 rounded shadow bg-tertiary-alt border border-tertiary-light"
+        className="items-center justify-center max-w-md mx-auto mt-5 p-4 rounded shadow bg-tertiary-alt border border-tertiary-light dark:bg-primary dark:border-secondary"
         onSubmit={handleSubmit}
       >
         <h2 className="mb-4 text-xl font-semibold">Add a new event</h2>
@@ -146,7 +146,7 @@ const EventAdder = () => {
           <input
             type="datetime-local"
             id="startTime"
-            className="w-full border border-gray-300 rounded py-2 px-3"
+            className="w-full border border-gray-300 rounded py-2 px-3 dark:text-black"
             name="startTime"
             value={startTime}
             onChange={(event) => setStartTime(event.target.value)}
@@ -162,19 +162,19 @@ const EventAdder = () => {
             name="endTime"
             value={endTime}
             onChange={(event) => setEndTime(event.target.value)}
-            className="w-full border border-gray-300 rounded py-2 px-3"
+            className="w-full border border-gray-300 rounded py-2 px-3 dark:text-black"
           />
         </div>
 
-        <button className="button" type="submit">
+        <button className="buttonHeader" type="submit">
           Publish Event
         </button>
       </form>
       {shown ? (
-        <div className="flex items-center justify-center bg-secondary/35 py-2 my-4 rounded max-w-md mx-auto">
+        <div className="flex flex-col items-center justify-center bg-secondary/35 py-2 my-4 rounded max-w-md mx-auto px-2">
           <h2 className="mx-2 py-2">Event added successfully!</h2>
-          <button className="button mx-2 py-2" type="button">
-            <Link href={`/events/${eventId}`}>Go to event</Link>
+          <button className="button mx-auto" type="button">
+            <Link href={`/events/${eventId}`}>See event</Link>
           </button>
           <button
             className="button mx-3 py-2"

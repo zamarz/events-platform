@@ -10,7 +10,7 @@ const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 
   const [darkTheme, setDarkTheme] = useState<boolean>(storageTheme);
 
-  const [renderComponent, setRenderComponent] = useState(false);
+  const [renderComponent, setRenderComponent] = useState<boolean>(false);
 
   useEffect(() => {
     setRenderComponent(true);

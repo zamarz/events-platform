@@ -4,13 +4,14 @@ import { getEventById } from "@/app/utils/api";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import EventBriteWidget from "./EventBriteWidget";
 import {
   eventEndDateGetter,
   eventStartDateGetter,
 } from "@/app/utils/functions";
 import { Event } from "@/app/types/types";
+import UserContext from "@/context/UserContext";
 
 const EventSingle = () => {
   const [eventInfo, setEventInfo] = useState<Event | null>(null);
@@ -18,13 +19,13 @@ const EventSingle = () => {
   const [eventEndDate, setEventEndDate] = useState<string>("");
 
   const params = useParams();
+  const user = useContext(UserContext);
 
   useEffect(() => {
     getEventById(params.id)
       .then((data: Event) => {
         eventStartDateGetter(data, setEventStartDate);
         eventEndDateGetter(data, setEventEndDate);
-        console.log(data);
         return setEventInfo(data);
       })
       .catch((error: Error) => {
@@ -78,8 +79,14 @@ const EventSingle = () => {
           <p className="py-3">
             <span className="font-semibold">End:</span> {eventEndDate}
           </p>
+          {user.email.length > 0 ? (
+            <EventBriteWidget eventId={eventInfo.id} eventInfo={eventInfo} />
+          ) : (
+            <button className="buttonEB">
+              <Link href={"/sign-in"}>Sign in to get tickets</Link>
+            </button>
+          )}
 
-          <EventBriteWidget eventId={eventInfo.id} eventInfo={eventInfo} />
           <p className="py-3">
             <Link className="button" href={"/events"}>
               Return to events

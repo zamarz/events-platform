@@ -65,7 +65,7 @@ const EventBriteWidget: React.FC<EventBriteWidget> = ({
 
   return (
     <button className="buttonEB" id="widget-trigger" type="button">
-      Buy Tickets
+      Get Tickets
     </button>
   );
 };

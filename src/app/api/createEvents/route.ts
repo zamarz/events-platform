@@ -2,6 +2,10 @@
 // import { NextApiRequest, NextApiResponse } from "next";
 // import { NextResponse } from "next/server";
 
+export const Route = () => {
+  console.log("test");
+};
+
 // export async function POST(req: NextApiRequest, res: NextApiResponse) {
 //   console.log("hello there, we're in the POST function");
 

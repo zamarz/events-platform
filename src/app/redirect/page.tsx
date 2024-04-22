@@ -27,27 +27,13 @@ const redirect = () => {
     }
   }, []);
 
-  // if (accessToken) {
-  //   try {
-  //     writeNewUserInfoToDB(user, accessToken);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  //   // router.push("/");
-  // }
-
-  //need function to write token to database with user information
-
-  //basically make whole section below a loading screen while you do the functionality above?
-
-  console.log(accessToken);
   return (
     <section className="min-h-screen px-10 py-10 mx-auto container">
       <div className="pt-7">
         <h3 className="text-2xl">Redirect Testing</h3>
-        <p>Will it work?</p>
+        <p>You should be redirected shortly.</p>
       </div>
-      <button className="button">Testing</button>
+      <button className="button">Click here</button>
     </section>
   );
 };

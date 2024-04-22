@@ -6,7 +6,6 @@ import { FormEvent, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Loading from "@/app/loading";
-import { signIn } from "next-auth/react";
 import { signInWithGoogle } from "@/app/utils/functions";
 
 const RegisterUser = () => {

@@ -36,12 +36,12 @@ const EventConfirmation = () => {
           Great, you're all signed up for {eventName} which begins on{" "}
           {startTime}!
         </h2>
-        <button
+        {/* <button
           className="button"
           onClick={() => createGoogleEvent(eventDataToSend2)}
         >
           Add to your Google Calendar
-        </button>
+        </button> */}
         <button className="button">
           <Link className="button" href="/events">
             See all events

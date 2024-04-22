@@ -8,7 +8,11 @@ import { useEffect, useState } from "react";
 import { CiCalendarDate } from "react-icons/ci";
 import { FaPoundSign } from "react-icons/fa";
 
-const EventCard = ({ eventInfo }: any) => {
+type EventCardProps = {
+  eventInfo: Event;
+};
+
+const EventCard: React.FC<EventCardProps> = ({ eventInfo }) => {
   const [eventStartDate, setEventStartDate] = useState<string>("");
   const style1 = { fontSize: "1.5em" };
 

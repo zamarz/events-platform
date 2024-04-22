@@ -1,6 +1,6 @@
 # Run Together Event Planner
 
-This is a project designed to help a running community plan its events.  You can find the hosted version here.
+This is a project designed to help a running community plan its events.  You can find the hosted version [here](https://events-platform-7h3klwwah-zach-marzouks-projects.vercel.app/).
 
 ## EventBrite API
 

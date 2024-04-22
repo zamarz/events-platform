@@ -1,5 +1,6 @@
 "use client";
 
+import { Event } from "@/app/types/types";
 import { eventStartDateGetter } from "@/app/utils/functions";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,7 +9,7 @@ import { CiCalendarDate } from "react-icons/ci";
 import { FaPoundSign } from "react-icons/fa";
 
 const EventCard = ({ eventInfo }: any) => {
-  const [eventStartDate, setEventStartDate] = useState("");
+  const [eventStartDate, setEventStartDate] = useState<string>("");
   const style1 = { fontSize: "1.5em" };
 
   useEffect(() => {

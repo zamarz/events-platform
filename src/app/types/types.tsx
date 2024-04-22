@@ -35,7 +35,7 @@ export type getEventsIdType = {
 export type Event = {
   capacity: number;
   capacity_is_custom: boolean;
-  category_id: null | number | string;
+  category_id: null | string;
   changed: string;
   created: string;
   currency: string;
@@ -49,7 +49,7 @@ export type Event = {
     utc: string;
   };
   facebook_event_id: null | string;
-  format_id: null | number;
+  format_id: null | string;
   hide_end_date: boolean;
   hide_start_date: boolean;
   id: string;
@@ -63,7 +63,26 @@ export type Event = {
   is_series_parent: boolean;
   listed: boolean;
   locale: string;
-  logo: null;
+  logo: null | {
+    aspect_ratio: string;
+    crop_mask: {
+      height: number;
+      top_left: {
+        x: number;
+        y: number;
+      };
+      width: number;
+    };
+    edge_color: string;
+    edge_color_set: boolean;
+    id: string;
+    original: {
+      height: number;
+      url: string;
+      width: number;
+    };
+    url: string;
+  };
   logo_id: null | number;
   name: {
     html: string;

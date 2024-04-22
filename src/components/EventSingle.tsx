@@ -10,19 +10,21 @@ import {
   eventEndDateGetter,
   eventStartDateGetter,
 } from "@/app/utils/functions";
+import { getEventsIdType } from "@/app/types/types";
 
 const EventSingle = () => {
-  const [eventInfo, setEventInfo] = useState(null);
-  const [eventStartDate, setEventStartDate] = useState("");
-  const [eventEndDate, setEventEndDate] = useState("");
+  const [eventInfo, setEventInfo] = useState<Event | null>(null);
+  const [eventStartDate, setEventStartDate] = useState<string>("");
+  const [eventEndDate, setEventEndDate] = useState<string>("");
 
   const params = useParams();
 
   useEffect(() => {
     getEventById(params.id)
-      .then((data: any) => {
+      .then((data: Event) => {
         eventStartDateGetter(data, setEventStartDate);
         eventEndDateGetter(data, setEventEndDate);
+        console.log(data);
         return setEventInfo(data);
       })
       .catch((error: Error) => {

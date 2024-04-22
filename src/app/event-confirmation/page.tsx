@@ -12,7 +12,7 @@ const EventConfirmation = () => {
   const tokenString = sessionStorage.getItem("token");
   const token = tokenString ? JSON.parse(tokenString) : null;
 
-  console.log(token, "token");
+  const { accessToken } = token;
   const eventDataToSend = {
     eventName: eventName,
     summary: null,
@@ -26,6 +26,7 @@ const EventConfirmation = () => {
     summary: "testingSummary",
     startDateTime: "April 5, 2024",
     endDateTime: "April 6, 2024",
+    accessToken: accessToken,
   };
 
   return (

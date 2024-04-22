@@ -15,7 +15,7 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
   try {
     const { eventName, summary, startDateTime, endDateTime, accessToken } =
       req.body;
-
+    console.log(accessToken, "accessToken");
     // OAuth2 client setup
     const auth = new google.auth.OAuth2(
       process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_CLIENT_ID,
@@ -23,6 +23,13 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
       "http://localhost:3000"
     );
 
+    const newTokens = await auth.getToken(accessToken);
+    console.log(newTokens, "newTokens");
+
+    const url = auth.generateAuthUrl({
+      access_type: "offline",
+      scope: "https://www.googleapis.com/auth/calendar",
+    });
     // Assuming your access token is stored in session or database and retrieved here
     // Set this according to your authentication flow
     auth.setCredentials({

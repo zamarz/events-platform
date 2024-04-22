@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { createGoogleEvent } from "../utils/api";
 
 const EventConfirmation = () => {
   //will need integration with Google Calendar

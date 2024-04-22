@@ -60,7 +60,7 @@ const EventBriteWidget: React.FC<EventBriteWidget> = ({
     } else {
       setupWidget();
     }
-  }, [eventId, eventInfo]);
+  }, [eventId, eventInfo, router]);
 
   return (
     <button className="buttonEB" id="widget-trigger" type="button">

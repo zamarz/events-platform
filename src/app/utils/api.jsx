@@ -98,50 +98,50 @@ export const getEventById = (event_id) => {
 };
 
 //need to check if need this
-export const createGoogleEvent = async (eventData, token) => {
-  console.log("hello there, cgE");
-  try {
-    const response = await fetch("/api/createEvents", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(eventData),
-    });
-    console.log(response, "response");
-    if (!response.ok) {
-      throw new Error("Failed to create event");
-    }
+// export const createGoogleEvent = async (eventData, token) => {
+//   console.log("hello there, cgE");
+//   try {
+//     const response = await fetch("/api/createEvents", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(eventData),
+//     });
+//     console.log(response, "response");
+//     if (!response.ok) {
+//       throw new Error("Failed to create event");
+//     }
 
-    const data = await response.json();
-    console.log("Event created:", data);
-  } catch (error) {
-    console.error("Error creating event:", error);
-  }
-};
+//     const data = await response.json();
+//     console.log("Event created:", data);
+//   } catch (error) {
+//     console.error("Error creating event:", error);
+//   }
+// };
 
 //not needed for now
-export const authorizeUser = (code) => {
-  const data = new URLSearchParams({
-    grant_type: "authorization_code",
-    client_id: process.env.NEXT_PUBLIC_EVENTBRITE_API_KEY,
-    client_secret: process.env.NEXT_PUBLIC_EVENTBRITE_CLIENT_SECRET,
-    code: `${code}`,
-    redirect_uri:
-      "https://ebbe-2a02-c7c-f42d-2b00-fc3d-65ea-44bb-d1fb.ngrok-free.app/redirect",
-  });
+// export const authorizeUser = (code) => {
+//   const data = new URLSearchParams({
+//     grant_type: "authorization_code",
+//     client_id: process.env.NEXT_PUBLIC_EVENTBRITE_API_KEY,
+//     client_secret: process.env.NEXT_PUBLIC_EVENTBRITE_CLIENT_SECRET,
+//     code: `${code}`,
+//     redirect_uri:
+//       "https://ebbe-2a02-c7c-f42d-2b00-fc3d-65ea-44bb-d1fb.ngrok-free.app/redirect",
+//   });
 
-  return axios
-    .post("https://www.eventbrite.com/oauth/token", data, {
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-    })
-    .then((response) => {
-      console.log(response.data);
-      return response.data;
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-};
+//   return axios
+//     .post("https://www.eventbrite.com/oauth/token", data, {
+//       headers: {
+//         "Content-Type": "application/x-www-form-urlencoded",
+//       },
+//     })
+//     .then((response) => {
+//       console.log(response.data);
+//       return response.data;
+//     })
+//     .catch((error) => {
+//       console.error(error);
+//     });
+// };

@@ -14,7 +14,7 @@ const Redirect = () => {
     } catch (error) {
       console.error(error);
     }
-  }, []);
+  }, [user]);
 
   if (user.email.length === 0) {
     return <Error />;

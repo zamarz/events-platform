@@ -33,7 +33,8 @@ export const eventEndDateGetter = (data: any, setEventEndDate: any) => {
 
 export const signInWithGoogle = () => {
   signInWithPopup(auth, provider)
-    .then((result) => {
+    .then((result: any) => {
+      console.log(result);
       const credential = GoogleAuthProvider.credentialFromResult(result);
       console.log(result, "result");
       console.log(credential);

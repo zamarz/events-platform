@@ -168,3 +168,9 @@ export type TicketClass = {
   tax: null | string;
   ticket_parent_id: null | string;
 };
+
+export type UserInfo = {
+  email: string | null;
+  uid: string;
+  photoURL: string | null;
+};

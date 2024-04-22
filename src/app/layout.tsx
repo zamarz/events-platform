@@ -10,6 +10,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../firebaseConfig";
 import { useEffect, useState } from "react";
 import UserContext from "../context/UserContext";
+import { UserInfo } from "./types/types";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,10 +24,9 @@ const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: RootLayoutProps) {
-  const [user, setUser] = useState({
+  const [user, setUser] = useState<UserInfo>({
     email: "",
     uid: "",
-    accessToken: "",
     photoURL: "",
   });
   useEffect(() => {
@@ -35,7 +35,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         const { email, uid, photoURL } = userData;
         setUser({ email, uid, photoURL });
       } else {
-        setUser({ email: "", uid: "", accessToken: "", photoURL: "" });
+        setUser({ email: "", uid: "", photoURL: "" });
       }
     });
 

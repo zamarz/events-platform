@@ -21,6 +21,14 @@ export type EventSummary = {
   };
 };
 
+export type EventTicketClass = {
+  ticket_class: {
+    name: string;
+    free: boolean;
+    quantity_total: number;
+  };
+};
+
 export type getEventsIdType = {
   events: Array<Event>;
   pagination: {
@@ -105,11 +113,58 @@ export type Event = {
     timezone: string;
     utc: string;
   };
-  status: "started";
+  status: string;
   subcategory_id: null | string;
-  summary: string;
+  summary: null | string;
   tx_time_limit: number;
   url: string;
   venue_id: null | string;
   version: null | string;
+};
+
+export type Published = {
+  published: boolean;
+};
+
+export type TicketClass = {
+  actual_cost: null | string;
+  actual_fee: null | string;
+  auto_hide: boolean;
+  capacity: number;
+  category: string;
+  cost: null | string;
+  delivery_methods: Array<string>;
+  description: null | string;
+  display_name: string;
+  donation: boolean;
+  event_id: string;
+  fee: null | string;
+  free: boolean;
+  has_pdf_ticket: boolean;
+  hidden: boolean;
+  hidden_currently: boolean;
+  hide_description: boolean;
+  hide_sale_dates: boolean;
+  id: string;
+  image_id: null | string;
+  include_fee: boolean;
+  maximum_quantity: null | string;
+  maximum_quantity_per_order: number;
+  minimum_quantity: number;
+  name: string;
+  on_sale_status: string;
+  order_confirmation_message: null;
+  payment_constraints: string[];
+  quantity_sold: number;
+  quantity_total: number;
+  resource_uri: string;
+  sales_channels: string[];
+  sales_end: string;
+  sales_end_relative: null | string;
+  sales_start: string;
+  secondary_assignment_enabled: boolean;
+  sorting: number;
+  split_fee: boolean;
+  tax: null | string;
+  ticket_parent_id: null | string;
 };

@@ -1,6 +1,13 @@
 "use client";
 
-import { EventData, EventSummary } from "@/app/types/types";
+import {
+  Event,
+  EventData,
+  EventSummary,
+  EventTicketClass,
+  Published,
+  TicketClass,
+} from "@/app/types/types";
 import {
   addTicketClass,
   createEvent,
@@ -15,16 +22,16 @@ import Link from "next/link";
 import Error from "@/app/error";
 
 const EventAdder = () => {
-  const [eventName, setEventName] = useState("");
-  const [startTime, setStartTime] = useState("");
-  const [endTime, setEndTime] = useState("");
-  const [utcStart, setUtcStart] = useState("");
-  const [utcEnd, setUtcEnd] = useState("");
-  const [summary, setSummary] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [eventId, setEventId] = useState("");
-  const [shown, setShown] = useState(false);
-  const [error, setError] = useState(false);
+  const [eventName, setEventName] = useState<string>("");
+  const [startTime, setStartTime] = useState<string>("");
+  const [endTime, setEndTime] = useState<string>("");
+  const [utcStart, setUtcStart] = useState<string>("");
+  const [utcEnd, setUtcEnd] = useState<string>("");
+  const [summary, setSummary] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [eventId, setEventId] = useState<string>("");
+  const [shown, setShown] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
 
   const newEventToSend: EventData = {
     event: {
@@ -49,7 +56,7 @@ const EventAdder = () => {
     },
   };
 
-  const ticketClass = {
+  const ticketClass: EventTicketClass = {
     ticket_class: {
       name: "General",
       free: true,
@@ -75,17 +82,17 @@ const EventAdder = () => {
     event.preventDefault();
     setLoading(true);
     createEvent(newEventToSend)
-      .then((response: any) => {
+      .then((response: Event) => {
         setEventId(response.id);
         return addTicketClass(response.id, ticketClass);
       })
-      .then((response: any) => {
+      .then((response: TicketClass) => {
         return updateEvent(response.event_id, extraEventInfo);
       })
-      .then((response: any) => {
+      .then((response: Event) => {
         return publishEvent(response.id);
       })
-      .then((response: any) => {
+      .then((response: Published) => {
         if (response.published === true) {
           setLoading(false);
           setShown(true);
@@ -93,6 +100,9 @@ const EventAdder = () => {
       })
       .catch((error: Error) => {
         setError(true);
+        setLoading(false);
+      })
+      .finally(() => {
         setLoading(false);
       });
 

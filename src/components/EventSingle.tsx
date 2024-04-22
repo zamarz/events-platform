@@ -1,6 +1,6 @@
 "use client";
 
-import { getEventById, getEventsId } from "@/app/utils/api";
+import { getEventById } from "@/app/utils/api";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -10,7 +10,7 @@ import {
   eventEndDateGetter,
   eventStartDateGetter,
 } from "@/app/utils/functions";
-import { getEventsIdType } from "@/app/types/types";
+import { Event } from "@/app/types/types";
 
 const EventSingle = () => {
   const [eventInfo, setEventInfo] = useState<Event | null>(null);

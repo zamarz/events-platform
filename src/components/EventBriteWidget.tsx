@@ -1,6 +1,5 @@
 "use client";
 
-import EventConfirmation from "@/app/event-confirmation/page";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 

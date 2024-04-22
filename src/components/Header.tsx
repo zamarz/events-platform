@@ -6,7 +6,6 @@ import Link from "next/link";
 import { useContext, useState } from "react";
 import { MdDarkMode, MdOutlineLightMode } from "react-icons/md";
 import { auth } from "../../firebaseConfig";
-import { useSession } from "next-auth/react";
 import { signUserOut } from "@/app/utils/functions";
 import { FiMenu } from "react-icons/fi";
 

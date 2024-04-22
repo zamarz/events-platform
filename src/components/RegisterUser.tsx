@@ -10,11 +10,11 @@ import { signIn } from "next-auth/react";
 import { signInWithGoogle } from "@/app/utils/functions";
 
 const RegisterUser = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
 
   if (loading) {
     return <Loading />;
@@ -35,8 +35,11 @@ const RegisterUser = () => {
         setError(true);
         console.log(errorCode);
         console.log(errorMessage);
+        setLoading(false);
+      })
+      .finally(() => {
+        setLoading(false);
       });
-    setLoading(false);
   };
 
   return (

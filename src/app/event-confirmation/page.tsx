@@ -9,7 +9,8 @@ const EventConfirmation = () => {
   const eventId = sessionStorage.getItem("eventId");
   const eventName = sessionStorage.getItem("name");
   const startTime = sessionStorage.getItem("startTime");
-  const token = JSON.parse(sessionStorage.getItem("token"));
+  const tokenString = sessionStorage.getItem("token");
+  const token = tokenString ? JSON.parse(tokenString) : null;
 
   console.log(token, "token");
   const eventDataToSend = {
@@ -26,9 +27,6 @@ const EventConfirmation = () => {
     startDateTime: "April 5, 2024",
     endDateTime: "April 6, 2024",
   };
-
-  // Example call
-  // createGoogleEvent(eventDataToSend2);
 
   return (
     <section className="flex items-center justify-center mx-auto container w-full min-h-screen">

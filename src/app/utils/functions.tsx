@@ -34,10 +34,7 @@ export const eventEndDateGetter = (data: any, setEventEndDate: any) => {
 export const signInWithGoogle = () => {
   signInWithPopup(auth, provider)
     .then((result: any) => {
-      console.log(result);
       const credential = GoogleAuthProvider.credentialFromResult(result);
-      console.log(result, "result");
-      console.log(credential);
       const token = result.user.stsTokenManager;
       sessionStorage.setItem("token", JSON.stringify(token));
 

@@ -8,9 +8,9 @@ import { useRouter } from "next/navigation";
 import { signInWithGoogle } from "@/app/utils/functions";
 
 const SignIn = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState(false);
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<boolean>(false);
   const router = useRouter();
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {

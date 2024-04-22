@@ -1,9 +1,18 @@
 "use client";
 
+import { Event } from "@/app/types/types";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-const EventBriteWidget = ({ eventId, eventInfo }: any) => {
+type EventBriteWidget = {
+  eventId: string;
+  eventInfo: Event;
+};
+
+const EventBriteWidget: React.FC<EventBriteWidget> = ({
+  eventId,
+  eventInfo,
+}) => {
   const router = useRouter();
 
   const setSessionStorage = () => {
@@ -31,7 +40,9 @@ const EventBriteWidget = ({ eventId, eventInfo }: any) => {
     };
 
     const setupWidget = () => {
+      //@ts-ignore
       if (window.EBWidgets) {
+        //@ts-ignore
         window.EBWidgets.createWidget({
           widgetType: "checkout",
           eventId: `${eventId}`,

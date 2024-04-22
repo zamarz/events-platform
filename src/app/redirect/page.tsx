@@ -7,7 +7,7 @@ import Error from "../error";
 import { writeNewUserInfoToDB } from "../utils/functions";
 import { useRouter } from "next/navigation";
 
-const redirect = () => {
+const Redirect = () => {
   const user = useContext(UserContext);
   const router = useRouter();
 
@@ -38,4 +38,4 @@ const redirect = () => {
   );
 };
 
-export default redirect;
+export default Redirect;

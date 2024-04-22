@@ -14,16 +14,16 @@ import { UserInfo } from "./types/types";
 
 const inter = Inter({ subsets: ["latin"] });
 
-type RootLayoutProps = {
-  children: React.ReactNode;
-};
-
 const metadata: Metadata = {
   title: "Run together",
   description: "Find your next running group",
 };
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   const [user, setUser] = useState<UserInfo>({
     email: "",
     uid: "",

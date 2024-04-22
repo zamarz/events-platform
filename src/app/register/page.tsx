@@ -1,6 +1,10 @@
 import RegisterUser from "@/components/RegisterUser";
-import React from "react";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Run together",
+  description: "Find your next running group",
+};
 const register = () => {
   return <RegisterUser />;
 };

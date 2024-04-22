@@ -18,7 +18,7 @@ const EventCard: React.FC<EventCardProps> = ({ eventInfo }) => {
 
   useEffect(() => {
     eventStartDateGetter(eventInfo, setEventStartDate);
-  });
+  }, [eventInfo]);
 
   return (
     <div className="mx-4 border border-primary py-3">

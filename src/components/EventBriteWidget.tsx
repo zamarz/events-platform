@@ -15,19 +15,18 @@ const EventBriteWidget: React.FC<EventBriteWidget> = ({
 }) => {
   const router = useRouter();
 
-  const setSessionStorage = () => {
-    try {
-      sessionStorage.setItem("eventId", eventId);
-      sessionStorage.setItem("name", eventInfo.name.text);
-      sessionStorage.setItem("startTime", eventInfo.start.local);
-    } catch (error) {
-      console.error(error);
-    }
-
-    router.push("/event-confirmation");
-  };
-
   useEffect(() => {
+    const setSessionStorage = () => {
+      try {
+        sessionStorage.setItem("eventId", eventId);
+        sessionStorage.setItem("name", eventInfo.name.text);
+        sessionStorage.setItem("startTime", eventInfo.start.local);
+      } catch (error) {
+        console.error(error);
+      }
+
+      router.push("/event-confirmation");
+    };
     const loadScript = () => {
       const script = document.createElement("script");
       script.src = "https://www.eventbrite.com/static/widgets/eb_widgets.js";

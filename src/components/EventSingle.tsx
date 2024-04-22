@@ -31,7 +31,7 @@ const EventSingle = () => {
       .catch((error: Error) => {
         console.error(error);
       });
-  }, []);
+  }, [params.id]);
 
   return (
     <section className="mx-auto container w-full min-h-screen">

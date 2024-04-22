@@ -1,23 +1,12 @@
 "use client";
 
 import { useContext, useEffect } from "react";
-import { authorizeUser, publishEvent } from "../utils/api";
 import UserContext from "@/context/UserContext";
 import Error from "../error";
 import { writeNewUserInfoToDB } from "../utils/functions";
-import { useRouter } from "next/navigation";
 
 const Redirect = () => {
   const user = useContext(UserContext);
-  const router = useRouter();
-
-  if (user.email.length === 0) {
-    return <Error />;
-  }
-
-  const currentURL = typeof window !== "undefined" ? window.location.href : "";
-  const urlParams = new URLSearchParams(new URL(currentURL).hash.slice(1));
-  let accessToken = urlParams.get("access_token");
 
   useEffect(() => {
     try {
@@ -26,6 +15,14 @@ const Redirect = () => {
       console.error(error);
     }
   }, []);
+
+  if (user.email.length === 0) {
+    return <Error />;
+  }
+
+  const currentURL = typeof window !== "undefined" ? window.location.href : "";
+  const urlParams = new URLSearchParams(new URL(currentURL).hash.slice(1));
+  let accessToken = urlParams.get("access_token");
 
   return (
     <section className="min-h-screen px-10 py-10 mx-auto container">

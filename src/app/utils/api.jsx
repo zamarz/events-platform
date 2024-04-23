@@ -97,28 +97,29 @@ export const getEventById = (event_id) => {
     });
 };
 
-//need to check if need this
-// export const createGoogleEvent = async (eventData, token) => {
-//   console.log("hello there, cgE");
-//   try {
-//     const response = await fetch("/api/createEvents", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify(eventData),
-//     });
-//     console.log(response, "response");
-//     if (!response.ok) {
-//       throw new Error("Failed to create event");
-//     }
-
-//     const data = await response.json();
-//     console.log("Event created:", data);
-//   } catch (error) {
-//     console.error("Error creating event:", error);
-//   }
-// };
+export const createGoogleEvent = async (eventData, token) => {
+  console.log("hello there, cgE");
+  try {
+    const response = await fetch(
+      "https://www.googleapis.com/calendar/v3/calendars/primary/events",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(eventData),
+      }
+    );
+    if (!response.ok) {
+      throw new Error("Failed to create event");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error creating event:", error);
+  }
+};
 
 //not needed for now
 // export const authorizeUser = (code) => {

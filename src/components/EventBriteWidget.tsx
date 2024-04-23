@@ -21,6 +21,11 @@ const EventBriteWidget: React.FC<EventBriteWidget> = ({
         sessionStorage.setItem("eventId", eventId);
         sessionStorage.setItem("name", eventInfo.name.text);
         sessionStorage.setItem("startTime", eventInfo.start.local);
+        sessionStorage.setItem("endTime", eventInfo.end.local);
+
+        if (eventInfo.summary) {
+          sessionStorage.setItem("summary", eventInfo.summary);
+        }
       } catch (error) {
         console.error(error);
       }

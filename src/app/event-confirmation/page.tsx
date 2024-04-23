@@ -1,31 +1,53 @@
 "use client";
 
 import Link from "next/link";
+import { createGoogleEvent } from "../utils/api";
+import { formatISO } from "date-fns";
+import { useEffect, useState } from "react";
+import Error from "../error";
+import { eventStartDateFinder } from "../utils/functions";
 
 const EventConfirmation = () => {
-  //will need integration with Google Calendar
+  const [calendar, setCalendar] = useState(false);
+  const [eventStartDate, setEventStartDate] = useState<string>("");
 
   const eventId = sessionStorage.getItem("eventId");
   const eventName = sessionStorage.getItem("name");
   const startTime = sessionStorage.getItem("startTime");
+  const endTime = sessionStorage.getItem("endTime");
+  const eventSummary = sessionStorage.getItem("summary");
   const tokenString = sessionStorage.getItem("token");
   const token = tokenString ? JSON.parse(tokenString) : null;
+  const startDate = startTime ? startTime : new Date();
+  const endDate = endTime ? endTime : new Date();
 
-  const { accessToken } = token;
+  useEffect(() => {
+    eventStartDateFinder(startTime, setEventStartDate);
+  }, [startTime]);
+
   const eventDataToSend = {
-    eventName: eventName,
-    summary: null,
-    startDateTime: startTime,
-    endDateTime: null,
-    accessToken: token,
+    description: eventSummary,
+    summary: eventName,
+    start: {
+      dateTime: formatISO(startDate),
+      timeZone: "Europe/London",
+    },
+    end: {
+      dateTime: formatISO(endDate),
+      timeZone: "Europe/London",
+    },
   };
 
-  const eventDataToSend2 = {
-    eventName: "testing name",
-    summary: "testingSummary",
-    startDateTime: "April 5, 2024",
-    endDateTime: "April 6, 2024",
-    accessToken: accessToken,
+  const handleClick = () => {
+    createGoogleEvent(eventDataToSend, token)
+      .then((data: any) => {
+        if (data.status === "confirmed") {
+          setCalendar(true);
+        }
+      })
+      .catch((error) => {
+        return <Error />;
+      });
   };
 
   return (
@@ -33,19 +55,36 @@ const EventConfirmation = () => {
       <div className="flex flex-col justify-center mx-auto items-center">
         <h2 className="text-lg md:text-xl mx-auto py-6 text-pretty px-3">
           Great, you're all signed up for {eventName} which begins on{" "}
-          {startTime}!
+          {eventStartDate}!
         </h2>
-        {/* <button
-          className="button"
-          onClick={() => createGoogleEvent(eventDataToSend2)}
-        >
-          Add to your Google Calendar
-        </button> */}
+        {tokenString ? (
+          <button className="button" onClick={() => handleClick()}>
+            Add to your Google Calendar
+          </button>
+        ) : (
+          <></>
+        )}
         <button className="button">
           <Link className="button" href="/events">
             See all events
           </Link>
         </button>
+        {calendar ? (
+          <div className="flex flex-col items-center justify-center bg-secondary/35 py-2 my-4 rounded max-w-md mx-auto px-2">
+            <h2 className="mx-2 py-2">
+              The event has been added to your Google Calendar!
+            </h2>
+            <button
+              className="button mx-3 py-2"
+              type="button"
+              onClick={() => setCalendar(false)}
+            >
+              Close
+            </button>
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     </section>
   );

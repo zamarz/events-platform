@@ -2,7 +2,6 @@ import { collection, addDoc } from "firebase/firestore";
 import { auth, db } from "../../../firebaseConfig";
 import { format, parseISO } from "date-fns";
 import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
-import { provider } from "@/components/Provider";
 
 export const writeNewUserInfoToDB = async (user: any) => {
   try {
@@ -24,6 +23,15 @@ export const eventStartDateGetter = (data: any, setEventStartDate: any) => {
   setEventStartDate(formattedStartDate);
 };
 
+export const eventStartDateFinder = (
+  dateString: any,
+  setEventStartDate: any
+) => {
+  const dateObject = parseISO(dateString);
+  const formattedStartDate = format(dateObject, "MMMM dd, yyyy h:mm aa");
+  setEventStartDate(formattedStartDate);
+};
+
 export const eventEndDateGetter = (data: any, setEventEndDate: any) => {
   const dateString = data.end.local;
   const dateObject = parseISO(dateString);
@@ -31,14 +39,19 @@ export const eventEndDateGetter = (data: any, setEventEndDate: any) => {
   setEventEndDate(formattedEndDate);
 };
 
+const provider = new GoogleAuthProvider();
+provider.addScope("https://www.googleapis.com/auth/calendar");
+
 export const signInWithGoogle = () => {
   signInWithPopup(auth, provider)
     .then((result: any) => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = result.user.stsTokenManager;
+
+      const token = credential?.accessToken;
       sessionStorage.setItem("token", JSON.stringify(token));
 
       const user = result.user;
+
       // IdP data available using getAdditionalUserInfo(result)
       // ...
     })
